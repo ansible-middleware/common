@@ -28,7 +28,6 @@ requirements:
 extends_documentation_fragment:
     - files
     - middleware_automation.common.jbossnetwork_connection_options
-    - middleware_automation.common.jbossnetwork_search_options
 options:
     dest:
         description:
@@ -136,22 +135,24 @@ from ansible_collections.middleware_automation.common.plugins.module_utils.const
     LIST_PRODUCT_CATEGORIES_ENDPOINT
 )
 
-
 try:
     import requests
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
     REQUESTS_IMP_ERR = traceback.format_exc()
+else:
+    REQUESTS_IMP_ERR = None
 
 
 def argspec():
     argument_spec = copy.deepcopy(JBOSS_NETWORK_COMMON_ARGS_SPEC)
     argument_spec.update(copy.deepcopy(JBOSS_NETWORK_SEARCH_ARGS_SPEC))
     argument_spec["dest"] = dict(required=True)
-    argument_spec["force"] = dict(required=False,default=False, type=bool)
+    argument_spec["force"] = dict(required=False, default=False, type=bool)
 
     return argument_spec
+
 
 def main():
     module = AnsibleModule(
@@ -161,7 +162,7 @@ def main():
 
     if not HAS_REQUESTS:
         module.fail_json(msg=missing_required_lib("requests"), exception=REQUESTS_IMP_ERR)
-    
+
     client_id = module.params.get('client_id')
     client_secret = module.params.get('client_secret')
     api_url = module.params.get('api_url')
@@ -178,28 +179,29 @@ def main():
         client_id = os.environ.get(REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID_ENV_VAR)
 
     if not client_id:
-        module.fail_json(msg=str(f"Client ID not specified and unable to determine Client ID from '{REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID_ENV_VAR}' environment variable."))
+        module.fail_json(msg=str("Client ID not specified and unable to determine Client ID "
+                                 f"from '{REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID_ENV_VAR}' environment variable."))
 
     if not client_secret:
         client_secret = os.environ.get(REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET_ENV_VAR)
 
     if not client_secret:
-        module.fail_json(msg=str(f"Client Secret not specified and unable to determine Client Secret from '{REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET_ENV_VAR}' environment variable."))
+        module.fail_json(msg=str("Client Secret not specified and unable to determine Client Secret "
+                                 f"from '{REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET_ENV_VAR}' environment variable."))
 
     if not dest:
         module.fail_json(msg=str("Destination path not provided"))
-    
+
     session = get_authenticated_session(module, sso_url, validate_certs, client_id, client_secret)
 
     api_base_url = f"{api_url}{API_SERVICE_PATH}"
-
 
     if product_category is not None:
         # List Product Categories
         product_categories = []
 
         try:
-            product_categories = perform_search(session, f"{api_base_url}{LIST_PRODUCT_CATEGORIES_ENDPOINT}",validate_certs)
+            product_categories = perform_search(session, f"{api_base_url}{LIST_PRODUCT_CATEGORIES_ENDPOINT}", validate_certs)
         except Exception as err:
             module.fail_json(msg="Error Listing Available Product Categories: %s" % (to_native(err)))
 
@@ -212,7 +214,7 @@ def main():
     search_params = generate_search_params(product_category, product_id, product_type, product_version)
 
     try:
-        search_results = perform_search(session, f"{api_base_url}{SEARCH_ENDPOINT}", validate_certs,search_params)
+        search_results = perform_search(session, f"{api_base_url}{SEARCH_ENDPOINT}", validate_certs, search_params)
     except Exception as err:
         module.fail_json(msg="Error Searching for Products: %s" % (to_native(err)))
 
@@ -225,10 +227,10 @@ def main():
         ]
 
         for productIdx, product in enumerate(search_results):
-            msg.append(f"{productIdx+1} - ({search_results[productIdx]['id']}) {search_results[productIdx]['title']}.")
-        
+            msg.append(f"{productIdx+1} - ({product['id']}) {product['title']}.")
+
         module.fail_json(msg=" ".join(msg))
-    
+
     file_name = search_results[0]['file_path'].rsplit('/')[-1]
 
     dest_is_dir = os.path.isdir(dest)
@@ -241,11 +243,10 @@ def main():
         dest=dest
     )
 
-
     if os.path.exists(dest) and not force:
         file_args = module.load_file_common_arguments(module.params, path=dest)
         result['changed'] = module.set_fs_attributes_if_different(file_args, False)
-         
+
         if result['changed']:
             module.exit_json(msg="file already exists but file attributes changed", **result)
         module.exit_json(msg="file already exists", **result)
@@ -265,12 +266,13 @@ def main():
             module.fail_json(msg="Destination %s is not writable" % (os.path.dirname(dest)), **result)
 
     try:
-        with session.get(search_results[0]["download_path"], verify=validate_certs, stream=True, allow_redirects=True, headers={"User-Agent": "product_download"}) as r:
+        with session.get(search_results[0]["download_path"], verify=validate_certs,
+                         stream=True, allow_redirects=True, headers={"User-Agent": "product_download"}) as r:
             r.raise_for_status()
             with open(dest, 'wb') as f:
                 for chunk in r.iter_content(chunk_size=8192):
                     f.write(chunk)
-        
+
         result['changed'] = True
     except Exception as err:
         module.fail_json(msg="Error Downloading %s: %s" % (search_results[0]['title'], to_native(err)))
@@ -282,7 +284,7 @@ def main():
         result['md5sum'] = module.md5(dest)
     except ValueError:
         result['md5sum'] = None
-    
+
     module.exit_json(msg="", **result)
 
 

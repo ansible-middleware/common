@@ -1,0 +1,7 @@
+plugins/modules/product_search.py validate-modules:missing-gplv3-license
+plugins/modules/product_download.py validate-modules:missing-gplv3-license
+plugins/modules/product_search.py validate-modules:import-error
+plugins/modules/product_download.py validate-modules:import-error
+plugins/modules/product_search.py import-3.10!skip
+plugins/modules/product_download.py import-3.10!skip
+plugins/module_utils/jbossnetwork.py import-3.10!skip

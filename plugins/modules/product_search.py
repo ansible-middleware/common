@@ -18,7 +18,7 @@ __metaclass__ = type
 
 DOCUMENTATION = r"""
 ---
-module: product_serach
+module: product_search
 author: Andrew Block (@sabre1041)
 short_description: Searches products from the JBoss Network API.
 description:
@@ -27,7 +27,6 @@ requirements:
     - requests
 extends_documentation_fragment:
     - middleware_automation.common.jbossnetwork_connection_options
-    - middleware_automation.common.jbossnetwork_search_options
 """
 
 
@@ -130,6 +129,8 @@ try:
 except ImportError:
     HAS_REQUESTS = False
     REQUESTS_IMP_ERR = traceback.format_exc()
+else:
+    REQUESTS_IMP_ERR = None
 
 
 def argspec():
@@ -137,6 +138,7 @@ def argspec():
     argument_spec.update(copy.deepcopy(JBOSS_NETWORK_SEARCH_ARGS_SPEC))
 
     return argument_spec
+
 
 def main():
     module = AnsibleModule(
@@ -146,7 +148,7 @@ def main():
 
     if not HAS_REQUESTS:
         module.fail_json(msg=missing_required_lib("requests"), exception=REQUESTS_IMP_ERR)
-    
+
     client_id = module.params.get('client_id')
     client_secret = module.params.get('client_secret')
     api_url = module.params.get('api_url')
@@ -161,25 +163,26 @@ def main():
         client_id = os.environ.get(REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID_ENV_VAR)
 
     if not client_id:
-        module.fail_json(msg=str(f"Client ID not specified and unable to determine Client ID from '{REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID_ENV_VAR}' environment variable."))
+        module.fail_json(msg=str("Client ID not specified and unable to determine Client ID "
+                                 f"from '{REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID_ENV_VAR}' environment variable."))
 
     if not client_secret:
         client_secret = os.environ.get(REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET_ENV_VAR)
 
     if not client_secret:
-        module.fail_json(msg=str(f"Client Secret not specified and unable to determine Client Secret from '{REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET_ENV_VAR}' environment variable."))
+        module.fail_json(msg=str("Client Secret not specified and unable to determine Client Secret "
+                                 f"from '{REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET_ENV_VAR}' environment variable."))
 
     session = get_authenticated_session(module, sso_url, validate_certs, client_id, client_secret)
 
     api_base_url = f"{api_url}{API_SERVICE_PATH}"
-
 
     if product_category is not None:
         # List Product Categories
         product_categories = []
 
         try:
-            product_categories = perform_search(session, f"{api_base_url}{LIST_PRODUCT_CATEGORIES_ENDPOINT}",validate_certs)
+            product_categories = perform_search(session, f"{api_base_url}{LIST_PRODUCT_CATEGORIES_ENDPOINT}", validate_certs)
         except Exception as err:
             module.fail_json(msg="Error Listing Available Product Categories: %s" % (to_native(err)))
 
@@ -192,16 +195,15 @@ def main():
     search_params = generate_search_params(product_category, product_id, product_type, product_version)
 
     try:
-        search_results = perform_search(session, f"{api_base_url}{SEARCH_ENDPOINT}", validate_certs,search_params)
+        search_results = perform_search(session, f"{api_base_url}{SEARCH_ENDPOINT}", validate_certs, search_params)
     except Exception as err:
         module.fail_json(msg="Error Searching for Products: %s" % (to_native(err)))
-
 
     result = dict(
         changed=False,
         results=search_results
     )
-    
+
     module.exit_json(msg="", **result)
 
 

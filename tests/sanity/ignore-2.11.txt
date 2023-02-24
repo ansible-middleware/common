@@ -1,0 +1,2 @@
+plugins/modules/product_search.py validate-modules:missing-gplv3-license
+plugins/modules/product_download.py validate-modules:missing-gplv3-license

@@ -1,3 +1,17 @@
+# Copyright [2023] [Red Hat, Inc.]
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 from __future__ import absolute_import, division, print_function
 
 __metaclass__ = type
@@ -30,7 +44,6 @@ def get_authenticated_session(module, sso_url, validate_certs, client_id, client
         "grant_type": "client_credentials",
     }
 
-
     # Obtain Access Token
     token_request = requests.post(
         f"{sso_url}/auth/realms/redhat-external/protocol/openid-connect/token",
@@ -52,8 +65,8 @@ def get_authenticated_session(module, sso_url, validate_certs, client_id, client
 
     return session
 
-def generate_search_params(product_category, product_id, product_type, product_version):
 
+def generate_search_params(product_category, product_id, product_type, product_version):
     search_params = {
         SEARCH_PARAM_CATEGORY: product_category,
         SEARCH_PARAM_TYPE: product_type,
@@ -65,10 +78,14 @@ def generate_search_params(product_category, product_id, product_type, product_v
 
     return search_params
 
-def perform_search(session, url, validate_certs, params={}):
+
+def perform_search(session, url, validate_certs, params=None):
 
     nextCursor = None
     results = []
+
+    if params is None:
+        params = {}
 
     while True:
 
@@ -91,7 +108,7 @@ def perform_search(session, url, validate_certs, params={}):
 
         results.extend(
             query_result_json[RESULTS_FIELD])
-        
+
         if NEXT_CURSOR_FIELD not in query_result_json or query_result_json[NEXT_CURSOR_FIELD] is None:
             break
 

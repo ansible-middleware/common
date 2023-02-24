@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - initial-impl
+      - main
   pull_request:
 
 env:
@@ -50,10 +50,3 @@ jobs:
       - name: Run sanity tests
         run: ansible-test sanity -v --color --python ${{ matrix.python_version }} --exclude changelogs/fragments/.gitignore --skip-test symlinks
         working-directory: ./ansible_collections/middleware_automation/common
-
-      # - name: Run molecule test
-      #   run: molecule test --all
-      #   working-directory: ./ansible_collections/middleware_automation/common
-      #   env:
-      #     PY_COLORS: '1'
-      #     ANSIBLE_FORCE_COLOR: '1'

@@ -16,7 +16,7 @@ env:
 jobs:
   docs:
     runs-on: ubuntu-latest
-    if: github.repository == 'ansible-middleware/amq'
+    if: github.repository == 'ansible-middleware/common'
     permissions:
       actions: write
       checks: write

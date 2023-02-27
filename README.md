@@ -51,4 +51,4 @@ The amq collection is a Beta release and for [Technical Preview](https://access.
 
 ## License
 
-[GNU General Public License v2.0](https://github.com/ansible-middleware/common/blob/main/LICENSE)
+[Apache License 2.0](https://github.com/ansible-middleware/common/blob/main/LICENSE)

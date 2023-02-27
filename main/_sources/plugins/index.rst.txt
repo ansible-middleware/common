@@ -1,0 +1,10 @@
+Plugin Index
+============
+
+.. toctree::
+   :caption: modules plugins
+   :maxdepth: 0
+
+   product_download
+   product_search
+

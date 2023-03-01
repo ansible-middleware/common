@@ -94,7 +94,7 @@ def perform_search(session, url, validate_certs, params=None):
         # Provide parameters
         if nextCursor is not None:
             pagination_params.update({CURSOR_FIELD: nextCursor})
-            params.pop(PAGE_SIZE_FIELD, None)
+            params = {}
         else:
             pagination_params.update({PAGE_SIZE_FIELD: QUERY_PAGE_SIZE})
             params.pop(CURSOR_FIELD, None)

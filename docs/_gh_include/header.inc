@@ -49,8 +49,8 @@
             </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
              <div itemprop="articleBody">
-                <section id="welcome-to-amq-collection-documentation">
-                  <h1>Welcome to Common Collection documentation<a class="headerlink" href="#welcome-to-amq-collection-documentation" title="Permalink to this headline"></a></h1>
+                <section id="welcome-to-common-collection-documentation">
+                  <h1>Welcome to Common Collection documentation<a class="headerlink" href="#welcome-to-common-collection-documentation" title="Permalink to this headline"></a></h1>
                     <div class="toctree-wrapper compound">
                       <p class="caption" role="heading"><span class="caption-text">Pick collection version:</span></p>
                         <ul>

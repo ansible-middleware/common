@@ -9,7 +9,7 @@ Use case:
  * download the patch
 
 
-** Search the installation zip
+## Search the installation zip
 
 With the following parameters we are looking for main EAP 7.4 release:
 
@@ -25,7 +25,7 @@ With the following parameters we are looking for main EAP 7.4 release:
 
 With get the following results (the want the last one):
 
-   "results": [
+    "results": [
         {
             "category": "appplatform",
             "description": "Red Hat JBoss Enterprise Application Platform 7.4 Core Source Code",
@@ -176,7 +176,7 @@ or if we know the filename:
         filtered_products: "{{ product_results.results | selectattr('file_path', 'match', '.*/jboss-eap-{{ eap_version }}.zip$') }}"
 
 
-** Download EAP
+## Download EAP
 
 With the received product_id it is trivial to pass it to the download endpoint:
 
@@ -188,7 +188,7 @@ With the received product_id it is trivial to pass it to the download endpoint:
         dest: /tmp
 
 
-** Search the most recent cumulative patch for EAP x.y
+## Search the most recent cumulative patch for EAP x.y
 
 We have to start with the following parameters (note: SECURITY is a subset of BUGFIX):
 
@@ -340,12 +340,12 @@ and we get:
         ]
 
 
- ** Download the patch
+## Download the patch
 
  With the product_id, this is trivial like the main zipfile.
 
 
- 
+
 
 
 

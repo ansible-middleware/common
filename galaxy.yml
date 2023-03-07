@@ -12,6 +12,7 @@ tags:
   - products
   - download
   - search
+  - tools
 dependencies: {}
 repository: https://github.com/ansible-middleware/common
 documentation: https://ansible-middleware.github.io/common

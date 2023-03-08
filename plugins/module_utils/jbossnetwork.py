@@ -16,7 +16,11 @@ from __future__ import absolute_import, division, print_function
 
 __metaclass__ = type
 
-import requests
+try:
+    import requests
+    HAS_REQUESTS = True
+except ImportError:
+    HAS_REQUESTS = False
 
 from ansible_collections.middleware_automation.common.plugins.module_utils.constants import (
     QUERY_PAGE_SIZE,
@@ -45,9 +49,10 @@ def get_authenticated_session(module, sso_url, validate_certs, client_id, client
     }
 
     # Obtain Access Token
-    token_request = requests.post(
-        f"{sso_url}/auth/realms/redhat-external/protocol/openid-connect/token",
-        data=token_request_data, verify=validate_certs)
+    if not HAS_REQUESTS:
+        token_request = requests.post(
+            f"{sso_url}/auth/realms/redhat-external/protocol/openid-connect/token",
+            data=token_request_data, verify=validate_certs)
 
     try:
         token_request.raise_for_status()
@@ -57,11 +62,12 @@ def get_authenticated_session(module, sso_url, validate_certs, client_id, client
     access_token = token_request.json()["access_token"]
 
     # Setup Session
-    session = requests.Session()
-    session.headers = {
-        "Authorization": f"Bearer {access_token}",
-        "Content-Type": "application/json",
-    }
+    if not HAS_REQUESTS:
+        session = requests.Session()
+        session.headers = {
+            "Authorization": f"Bearer {access_token}",
+            "Content-Type": "application/json",
+        }
 
     return session
 

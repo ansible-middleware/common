@@ -12,6 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# This file is part of Ansible
+#
+# Ansible is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Ansible is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
+
 from __future__ import absolute_import, division, print_function
 
 __metaclass__ = type
@@ -32,13 +47,15 @@ options:
     dest:
         description:
             - Absolute  .
-        type: path
+        type: str
         required: true
     force:
         description:
         - If C(true) and C(dest) is not a directory, will download the file every
             time and replace the file if the contents change. If C(false), the file
             will only be downloaded if the destination does not exist.
+        default: False
+        type: bool
 """
 
 

@@ -26,7 +26,7 @@ JBOSS_NETWORK_COMMON_ARGS_SPEC = dict(
     client_secret=dict(no_log=True, required=False),
     api_url=dict(required=False, default=JBOSS_NETWORK_API_URL),
     sso_url=dict(required=False, default=REDHAT_SSO_URL),
-    validate_certs=dict(required=False, default=True, type=bool)
+    validate_certs=dict(required=False, default=True, type='bool')
 )
 
 JBOSS_NETWORK_SEARCH_ARGS_SPEC = dict(

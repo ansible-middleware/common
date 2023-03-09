@@ -10,6 +10,11 @@ Collection containing common utilities to support Ansible Middleware automation
 ## Ansible version compatibility
 
 This collection has been tested against following Ansible versions: **>=2.9.10**.
+
+## Pyhton version compatibility
+
+This collection has been tested against following Pyhton versions: **>=3.6**.
+
 <!--end requires_ansible-->
 
 

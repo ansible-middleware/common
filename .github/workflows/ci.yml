@@ -35,7 +35,7 @@ jobs:
           if [ -f ansible_collections/middleware_automation/common/requirements.txt ]; then
             pip install -r ansible_collections/middleware_automation/common/requirements.txt
           fi
-
+  
       - name: Create default collection path
         run: |
           mkdir -p /home/runner/.ansible/

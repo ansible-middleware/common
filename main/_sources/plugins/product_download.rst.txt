@@ -132,6 +132,10 @@ Parameters
       Address of the JBoss Network API.
 
 
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`"https://jbossnetwork.api.redhat.com"`
+
       .. raw:: html
 
         </div>
@@ -199,7 +203,7 @@ Parameters
 
       .. rst-class:: ansible-option-type-line
 
-      :ansible-option-type:`string` / :ansible-option-required:`required`
+      :ansible-option-type:`string`
 
       .. raw:: html
 
@@ -235,7 +239,7 @@ Parameters
 
       .. rst-class:: ansible-option-type-line
 
-      :ansible-option-type:`string` / :ansible-option-required:`required`
+      :ansible-option-type:`string`
 
       .. raw:: html
 
@@ -271,7 +275,7 @@ Parameters
 
       .. rst-class:: ansible-option-type-line
 
-      :ansible-option-type:`path` / :ansible-option-required:`required`
+      :ansible-option-type:`string` / :ansible-option-required:`required`
 
       .. raw:: html
 
@@ -305,7 +309,7 @@ Parameters
 
       .. rst-class:: ansible-option-type-line
 
-      :ansible-option-type:`string`
+      :ansible-option-type:`boolean`
 
       .. raw:: html
 
@@ -316,6 +320,14 @@ Parameters
         <div class="ansible-option-cell">
 
       If \ :literal:`true`\  and \ :literal:`dest`\  is not a directory, will download the file every time and replace the file if the contents change. If \ :literal:`false`\ , the file will only be downloaded if the destination does not exist.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`false` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`true`
 
 
       .. raw:: html
@@ -436,6 +448,142 @@ Parameters
       When left unspecified, it uses the current user unless you are root, in which case it can preserve the previous ownership.
 
       Specifying a numeric username will be assumed to be a user ID and not a username. Avoid numeric usernames to avoid this confusion.
+
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-product_category"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-product_category:
+
+      .. rst-class:: ansible-option-title
+
+      **product_category**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-product_category" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Type of the Product Category
+
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-product_id"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-product_id:
+
+      .. rst-class:: ansible-option-title
+
+      **product_id**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-product_id" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Product Id for the Redhat customer portal
+
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-product_type"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-product_type:
+
+      .. rst-class:: ansible-option-title
+
+      **product_type**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-product_type" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Type of the Product
+
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-product_version"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-product_version:
+
+      .. rst-class:: ansible-option-title
+
+      **product_version**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-product_version" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Product Version to be downloaded.
 
 
       .. raw:: html
@@ -619,6 +767,10 @@ Parameters
 
       Address of the Red Hat SSO Server.
 
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`"https://sso.redhat.com"`
 
       .. raw:: html
 

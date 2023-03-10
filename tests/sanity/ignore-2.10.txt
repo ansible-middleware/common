@@ -1,0 +1,6 @@
+plugins/module_utils/jbossnetwork.py compile-2.7!skip # Python 2.7 is not supported on the controller
+plugins/modules/product_download.py compile-2.7!skip # Python 2.7 is not supported on the controller
+plugins/modules/product_search.py compile-2.7!skip # Python 2.7 is not supported on the controller
+plugins/module_utils/jbossnetwork.py compile-3.5!skip # Python 3.5 is not supported on the controller
+plugins/modules/product_download.py compile-3.5!skip # Python 3.5 is not supported on the controller
+plugins/modules/product_search.py compile-3.5!skip # Python 3.5 is not supported on the controller

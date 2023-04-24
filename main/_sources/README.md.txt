@@ -1,7 +1,7 @@
 # Ansible Collection - Common
-
+<!--start build_status -->
 [![Build Status](https://github.com/ansible-middleware/common/workflows/CI/badge.svg?branch=main)](https://github.com/ansible-middleware/common/actions/workflows/ci.yml)
-
+<!--end build_status -->
 ## About
 
 Collection containing common utilities to support Ansible Middleware automation
@@ -20,17 +20,23 @@ This collection has been tested against following Pyhton versions: **>=3.6**.
 
 ## Included content
 
-### Modules:
+### Modules
 
 * `product_download`: downloads products from the JBoss Network API
 * `product_search`: searches products from the JBoss Network API
 
+### Filters
+
+* `version_sort`: sort a list of strings according to version ordering
+
+
 ## Installation
 
+<!--start galaxy_download -->
 ### Download from galaxy
 
     ansible-galaxy collection install middleware_automation.common
-
+<!--end galaxy_download -->
 
 ### Build and install locally
 
@@ -50,9 +56,8 @@ To install all the dependencies via galaxy:
 
     pip install -r requirements.txt
 
-## Support
-
-The common collection is for [Technical Preview](https://access.redhat.com/support/offerings/techpreview). If you have any issues or questions related to collection, please don't hesitate to contact us on <Ansible-middleware-core@redhat.com> or open an issue on <https://github.com/ansible-middleware/common/issues>
+<!--start support -->
+<!--end support -->
 
 ## License
 

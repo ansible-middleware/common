@@ -24,6 +24,7 @@ This collection has been tested against following Pyhton versions: **>=3.6**.
 
 * `product_download`: downloads products from the JBoss Network API
 * `product_search`: searches products from the JBoss Network API
+* `xml`: manage bits and pieces of XML files or strings
 
 ### Filters
 

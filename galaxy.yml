@@ -1,10 +1,11 @@
 ---
 namespace: middleware_automation
 name: common
-version: "1.0.2"
+version: "1.1.0"
 readme: README.md
 authors:
   - Andrew Block <ablock@redhat.com>
+  - Guido Grazioli <ggraziol@redhat.com>
 description: Common utilities to support Ansible Middleware automation.
 license_file: "LICENSE"
 tags:

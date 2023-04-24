@@ -5,6 +5,15 @@ middleware_automation.common Release Notes
 .. contents:: Topics
 
 
+v1.1.0
+======
+
+Minor Changes
+-------------
+
+- Version sort filter `#9 <https://github.com/ansible-middleware/common/pull/9>`_
+- Xml module `#10 <https://github.com/ansible-middleware/common/pull/10>`_
+
 v1.0.2
 ======
 

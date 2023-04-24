@@ -8,3 +8,16 @@ releases:
     release_date: '2023-03-09'
   1.0.2:
     release_date: '2023-03-09'
+  1.1.0:
+    changes:
+      minor_changes:
+      - 'Version sort filter `#9 <https://github.com/ansible-middleware/common/pull/9>`_
+
+        '
+      - 'Xml module `#10 <https://github.com/ansible-middleware/common/pull/10>`_
+
+        '
+    fragments:
+    - 10.yaml
+    - 9.yaml
+    release_date: '2023-04-24'

@@ -13,4 +13,5 @@ Plugin Index
 
    product_download
    product_search
+   xml
 

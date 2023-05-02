@@ -14,6 +14,9 @@ tags:
   - download
   - search
   - tools
+  - runtimes
+  - middleware
+  - A4MW
 dependencies: {}
 repository: https://github.com/ansible-middleware/common
 documentation: https://ansible-middleware.github.io/common

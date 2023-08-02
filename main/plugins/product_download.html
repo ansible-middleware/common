@@ -12,6 +12,8 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
@@ -219,8 +221,8 @@ see <a class="reference internal" href="#ansible-collections-middleware-automati
 <a class="ansibleOptionLink" href="#parameter-mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The permissions the resulting filesystem object should have.</p>
-<p>For those used to <em>/usr/bin/chmod</em> remember that modes are actually octal numbers. You must either add a leading zero so that Ansible’s YAML parser knows it is an octal number (like <code class="docutils literal notranslate"><span class="pre">0644</span></code> or <code class="docutils literal notranslate"><span class="pre">01777</span></code>) or quote it (like <code class="docutils literal notranslate"><span class="pre">'644'</span></code> or <code class="docutils literal notranslate"><span class="pre">'1777'</span></code>) so Ansible receives a string and can do its own conversion from string into number.</p>
-<p>Giving Ansible a number without following one of these rules will end up with a decimal number which will have unexpected results.</p>
+<p>For those used to <em>/usr/bin/chmod</em> remember that modes are actually octal numbers. You must give Ansible enough information to parse them correctly. For consistent results, quote octal numbers (for example, <code class="docutils literal notranslate"><span class="pre">'644'</span></code> or <code class="docutils literal notranslate"><span class="pre">'1777'</span></code>) so Ansible receives a string and can do its own conversion from string into number. Adding a leading zero (for example, <code class="docutils literal notranslate"><span class="pre">0755</span></code>) works sometimes, but can fail in loops and some other circumstances.</p>
+<p>Giving Ansible a number without following either of these rules will end up with a decimal number which will have unexpected results.</p>
 <p>As of Ansible 1.8, the mode may be specified as a symbolic mode (for example, <code class="docutils literal notranslate"><span class="pre">u+rwx</span></code> or <code class="docutils literal notranslate"><span class="pre">u=rw,g=r,o=r</span></code>).</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">mode</span></code> is not specified and the destination filesystem object <strong>does not</strong> exist, the default <code class="docutils literal notranslate"><span class="pre">umask</span></code> on the system will be used when setting the mode for the newly created filesystem object.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">mode</span></code> is not specified and the destination filesystem object <strong>does</strong> exist, the mode of the existing filesystem object will be used.</p>
@@ -349,7 +351,7 @@ see <a class="reference internal" href="#ansible-collections-middleware-automati
 </section>
 <section id="return-values">
 <h2><a class="toc-backref" href="#id43" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Permalink to this heading"></a></h2>
-<p>Common return values are documented <a class="reference external" href="https://docs.ansible.com/ansible/latest/reference_appendices/common_return_values.html#common-return-values" title="(in Ansible v7)"><span class="xref std std-ref">here</span></a>, the following are the fields unique to this module:</p>
+<p>Common return values are documented <a class="reference external" href="https://docs.ansible.com/ansible/latest/reference_appendices/common_return_values.html#common-return-values" title="(in Ansible v8)"><span class="xref std std-ref">here</span></a>, the following are the fields unique to this module:</p>
 <table class="ansible-option-table docutils align-default" style="width: 100%">
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>

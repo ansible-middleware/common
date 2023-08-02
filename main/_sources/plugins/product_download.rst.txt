@@ -30,10 +30,6 @@
 
 .. Anchors: short name for ansible.builtin
 
-.. Anchors: aliases
-
-
-
 .. Title
 
 product_download -- Downloads products from the JBoss Network API.
@@ -398,9 +394,9 @@ Parameters
 
       The permissions the resulting filesystem object should have.
 
-      For those used to \ :emphasis:`/usr/bin/chmod`\  remember that modes are actually octal numbers. You must either add a leading zero so that Ansible's YAML parser knows it is an octal number (like \ :literal:`0644`\  or \ :literal:`01777`\ ) or quote it (like \ :literal:`'644'`\  or \ :literal:`'1777'`\ ) so Ansible receives a string and can do its own conversion from string into number.
+      For those used to \ :emphasis:`/usr/bin/chmod`\  remember that modes are actually octal numbers. You must give Ansible enough information to parse them correctly. For consistent results, quote octal numbers (for example, \ :literal:`'644'`\  or \ :literal:`'1777'`\ ) so Ansible receives a string and can do its own conversion from string into number. Adding a leading zero (for example, \ :literal:`0755`\ ) works sometimes, but can fail in loops and some other circumstances.
 
-      Giving Ansible a number without following one of these rules will end up with a decimal number which will have unexpected results.
+      Giving Ansible a number without following either of these rules will end up with a decimal number which will have unexpected results.
 
       As of Ansible 1.8, the mode may be specified as a symbolic mode (for example, \ :literal:`u+rwx`\  or \ :literal:`u=rw,g=r,o=r`\ ).
 

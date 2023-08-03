@@ -140,6 +140,7 @@ from ansible_collections.middleware_automation.common.plugins.module_utils.const
 
 try:
     import requests
+    requests_version = requests.__version__
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False

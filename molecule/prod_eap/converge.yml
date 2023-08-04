@@ -1,19 +1,17 @@
 ---
 - name: Converge
-  hosts: all
-  gather_facts: yes
+  hosts: localhost
+  gather_facts: no
   tasks:
     - name: Search EAP Product
       middleware_automation.common.product_search:
-        api_url: "https://jbossnetwork.api.redhat.com"
-        sso_url: "https://sso.redhat.com"
         client_id: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_CLIENTID') }}"
         client_secret: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_SECRET') }}"
-        product_version: '7.4'
         product_type: DISTRIBUTION
+        product_version: '7.4'
         product_category: appplatform
       register: rhn_products
-      no_log: true
+      no_log: false
 
     - name: Search install zipfile
       ansible.builtin.set_fact:

@@ -5,6 +5,14 @@ middleware_automation.common Release Notes
 .. contents:: Topics
 
 
+v1.1.1
+======
+
+Release Summary
+---------------
+
+Internal release
+
 v1.1.0
 ======
 

@@ -13,7 +13,7 @@
         product_version: '7.4'
         product_category: appplatform
       register: rhn_products
-      no_log: false
+      no_log: true
 
     - name: Search install zipfile
       ansible.builtin.set_fact:
@@ -31,10 +31,15 @@
       register: rhn_products
       no_log: true
 
-    - name: Determine patch versions list
-      ansible.builtin.set_fact:
-        filtered_versions: "{{ rhn_products.results | map(attribute='file_path') | select('match', '^[^/]*/jboss-eap-.*[0-9]*[.][0-9]*[.][0-9]*.*$') | map('regex_replace','[^/]*/jboss-eap-([0-9]*[.][0-9]*[.][0-9]*)-.*','\\1' ) | list | unique }}"
-
-    - name: Determine latest version
-      ansible.builtin.debug:
-         msg: "JBoss EAP 7.4 most recent CP is version {{ filtered_versions | middleware_automation.common.version_sort | last }}"
+    - name: Patch
+      block:
+        - name: Determine patch versions list
+          ansible.builtin.set_fact:
+            filtered_versions: "{{ rhn_products.results | map(attribute='file_path') | select('match', '^[^/]*/jboss-eap-.*[0-9]*[.][0-9]*[.][0-9]*.*$') | map('regex_replace','[^/]*/jboss-eap-([0-9]*[.][0-9]*[.][0-9]*)-.*','\\1' ) | list | unique }}"
+        - name: Determine latest version
+          ansible.builtin.debug:
+            msg: "JBoss EAP 7.4 most recent CP is version {{ filtered_versions | middleware_automation.common.version_sort | last }}"
+      rescue:
+        - name: No patches on staging
+          ansible.builtin.debug:
+            msg: "JBoss EAP 7.4 has no patches"

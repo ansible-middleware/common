@@ -133,6 +133,7 @@ jobs:
         python_version: ["3.11"]
         ansible_version: ["2.14", "2.15"]
         molecule_test:
+          - prod_eap
           - stage_eap
     steps:
       - name: Check out code
@@ -171,7 +172,7 @@ jobs:
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
-          PROD_JBOSSNETWORK_API_CLIENTID: ${{ secrets.PROD_JBOSSNETWORK_API_CLIENTID }}
-          PROD_JBOSSNETWORK_API_SECRET: ${{ secrets.PROD_JBOSSNETWORK_API_SECRET }}
-          STAGE_JBOSSNETWORK_API_CLIENTID: ${{ secrets.STAGE_JBOSSNETWORK_API_CLIENTID }}
-          STAGE_JBOSSNETWORK_API_SECRET: ${{ secrets.STAGE_JBOSSNETWORK_API_SECRET }}
+          PROD_JBOSSNETWORK_API_CLIENTID: '${{ secrets.PROD_JBOSSNETWORK_API_CLIENTID }}'
+          PROD_JBOSSNETWORK_API_SECRET: '${{ secrets.PROD_JBOSSNETWORK_API_SECRET }}'
+          STAGE_JBOSSNETWORK_API_CLIENTID: '${{ secrets.STAGE_JBOSSNETWORK_API_CLIENTID }}'
+          STAGE_JBOSSNETWORK_API_SECRET: '${{ secrets.STAGE_JBOSSNETWORK_API_SECRET }}'

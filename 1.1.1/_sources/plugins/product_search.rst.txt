@@ -1,0 +1,1011 @@
+
+.. Document meta
+
+:orphan:
+
+.. |antsibull-internal-nbsp| unicode:: 0xA0
+    :trim:
+
+.. role:: ansible-attribute-support-label
+.. role:: ansible-attribute-support-property
+.. role:: ansible-attribute-support-full
+.. role:: ansible-attribute-support-partial
+.. role:: ansible-attribute-support-none
+.. role:: ansible-attribute-support-na
+.. role:: ansible-option-type
+.. role:: ansible-option-elements
+.. role:: ansible-option-required
+.. role:: ansible-option-versionadded
+.. role:: ansible-option-aliases
+.. role:: ansible-option-choices
+.. role:: ansible-option-choices-default-mark
+.. role:: ansible-option-default-bold
+.. role:: ansible-option-configuration
+.. role:: ansible-option-returned-bold
+.. role:: ansible-option-sample-bold
+
+.. Anchors
+
+.. _ansible_collections.middleware_automation.common.product_search_module:
+
+.. Anchors: short name for ansible.builtin
+
+.. Title
+
+product_search -- Searches products from the JBoss Network API.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. Collection note
+
+.. note::
+    This module is part of the `middleware_automation.common collection <https://galaxy.ansible.com/middleware_automation/common>`_.
+
+    To install it, use: :code:`ansible-galaxy collection install middleware\_automation.common`.
+    You need further requirements to be able to use this module,
+    see :ref:`Requirements <ansible_collections.middleware_automation.common.product_search_module_requirements>` for details.
+
+    To use it in a playbook, specify: :code:`middleware_automation.common.product_search`.
+
+.. version_added
+
+
+.. contents::
+   :local:
+   :depth: 1
+
+.. Deprecated
+
+
+Synopsis
+--------
+
+.. Description
+
+- Searches products from the JBoss Network API.
+
+
+.. Aliases
+
+
+.. Requirements
+
+.. _ansible_collections.middleware_automation.common.product_search_module_requirements:
+
+Requirements
+------------
+The below requirements are needed on the host that executes this module.
+
+- requests
+
+
+
+
+
+
+.. Options
+
+Parameters
+----------
+
+.. rst-class:: ansible-option-table
+
+.. list-table::
+  :width: 100%
+  :widths: auto
+  :header-rows: 1
+
+  * - Parameter
+    - Comments
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-api_url"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-api_url:
+
+      .. rst-class:: ansible-option-title
+
+      **api_url**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-api_url" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Address of the JBoss Network API.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`"https://jbossnetwork.api.redhat.com"`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-client_id"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-client_id:
+
+      .. rst-class:: ansible-option-title
+
+      **client_id**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-client_id" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Client ID associated with to download a product from the JBoss Network API.
+
+      If value not set, will try environment variable \ :literal:`REDHAT\_PRODUCT\_DOWNLOAD\_CLIENT\_ID`\ 
+
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-client_secret"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-client_secret:
+
+      .. rst-class:: ansible-option-title
+
+      **client_secret**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-client_secret" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Client Secret associated with to download a product from the JBoss Network API.
+
+      If value not set, will try environment variable \ :literal:`REDHAT\_PRODUCT\_DOWNLOAD\_CLIENT\_SECRET`\ 
+
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-product_category"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-product_category:
+
+      .. rst-class:: ansible-option-title
+
+      **product_category**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-product_category" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Type of the Product Category
+
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-product_id"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-product_id:
+
+      .. rst-class:: ansible-option-title
+
+      **product_id**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-product_id" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Product Id for the Redhat customer portal
+
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-product_type"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-product_type:
+
+      .. rst-class:: ansible-option-title
+
+      **product_type**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-product_type" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Type of the Product
+
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-product_version"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-product_version:
+
+      .. rst-class:: ansible-option-title
+
+      **product_version**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-product_version" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Product Version to be downloaded.
+
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sso_url"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-sso_url:
+
+      .. rst-class:: ansible-option-title
+
+      **sso_url**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sso_url" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Address of the Red Hat SSO Server.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`"https://sso.redhat.com"`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-validate_certs"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-validate_certs:
+
+      .. rst-class:: ansible-option-title
+
+      **validate_certs**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-validate_certs" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`boolean`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      If \ :literal:`false`\ , SSL certificates will not be validated.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry:`false`
+      - :ansible-option-choices-entry-default:`true` :ansible-option-choices-default-mark:`← (default)`
+
+
+      .. raw:: html
+
+        </div>
+
+
+.. Attributes
+
+
+.. Notes
+
+
+.. Seealso
+
+
+.. Examples
+
+Examples
+--------
+
+.. code-block:: yaml+jinja
+
+    
+    - name: Search Red Hat Products
+      middleware_automation.common.product_search:
+        client_id: 123e4567-e89b-12d3-a456-426614174000
+        client_secret: 0mpkY0i8IdIRWbk6rLXBlf5Jkqq8i4nW
+        product_category: webserver
+        product_version: 5.5
+
+
+
+
+.. Facts
+
+
+.. Return values
+
+Return Values
+-------------
+Common return values are documented :ref:`here <common_return_values>`, the following are the fields unique to this module:
+
+.. rst-class:: ansible-option-table
+
+.. list-table::
+  :width: 100%
+  :widths: auto
+  :header-rows: 1
+
+  * - Key
+    - Description
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="return-results"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__return-results:
+
+      .. rst-class:: ansible-option-title
+
+      **results**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#return-results" title="Permalink to this return value"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`complex`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      The objects returned from the API
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-returned-bold:`Returned:` success
+
+
+      .. raw:: html
+
+        </div>
+
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="return-results/category"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/category:
+
+      .. rst-class:: ansible-option-title
+
+      **category**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#return-results/category" title="Permalink to this return value"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      Product category.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-returned-bold:`Returned:` success
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="return-results/description"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/description:
+
+      .. rst-class:: ansible-option-title
+
+      **description**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#return-results/description" title="Permalink to this return value"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      Description of the product.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-returned-bold:`Returned:` success
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="return-results/distribution_status"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/distribution_status:
+
+      .. rst-class:: ansible-option-title
+
+      **distribution_status**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#return-results/distribution_status" title="Permalink to this return value"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      Distribution status of the product.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-returned-bold:`Returned:` success
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="return-results/download_path"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/download_path:
+
+      .. rst-class:: ansible-option-title
+
+      **download_path**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#return-results/download_path" title="Permalink to this return value"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      URL where the product can be downloaded.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-returned-bold:`Returned:` success
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="return-results/id"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/id:
+
+      .. rst-class:: ansible-option-title
+
+      **id**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#return-results/id" title="Permalink to this return value"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`integer`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      id of the product.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-returned-bold:`Returned:` success
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="return-results/md5"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/md5:
+
+      .. rst-class:: ansible-option-title
+
+      **md5**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#return-results/md5" title="Permalink to this return value"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      MD5 checksum of the product.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-returned-bold:`Returned:` success
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="return-results/name"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/name:
+
+      .. rst-class:: ansible-option-title
+
+      **name**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#return-results/name" title="Permalink to this return value"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      Name of the product.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-returned-bold:`Returned:` success
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="return-results/sha256"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/sha256:
+
+      .. rst-class:: ansible-option-title
+
+      **sha256**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#return-results/sha256" title="Permalink to this return value"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      MD5 checksum of the product.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-returned-bold:`Returned:` success
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="return-results/title"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/title:
+
+      .. rst-class:: ansible-option-title
+
+      **title**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#return-results/title" title="Permalink to this return value"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      Title of the product.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-returned-bold:`Returned:` success
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="return-results/type"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/type:
+
+      .. rst-class:: ansible-option-title
+
+      **type**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#return-results/type" title="Permalink to this return value"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      Type of product.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-returned-bold:`Returned:` success
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="return-results/version"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/version:
+
+      .. rst-class:: ansible-option-title
+
+      **version**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#return-results/version" title="Permalink to this return value"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      Product version.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-returned-bold:`Returned:` success
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="return-results/visibility"></div>
+
+      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/visibility:
+
+      .. rst-class:: ansible-option-title
+
+      **visibility**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#return-results/visibility" title="Permalink to this return value"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      Product visibility.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-returned-bold:`Returned:` success
+
+
+      .. raw:: html
+
+        </div>
+
+
+
+
+..  Status (Presently only deprecated)
+
+
+.. Authors
+
+Authors
+~~~~~~~
+
+- Andrew Block (@sabre1041)
+
+
+
+.. Extra links
+
+
+.. Parsing errors
+

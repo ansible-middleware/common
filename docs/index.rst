@@ -1,7 +1,7 @@
 .. Red Hat middleware_automation Common Ansible Collection documentation main file
 
 Welcome to Common Collection documentation
-=======================================
+==========================================
 
 .. toctree::
    :maxdepth: 2

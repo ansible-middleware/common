@@ -11,11 +11,7 @@ on:
 jobs:
   ci:
     uses: ansible-middleware/github-actions/.github/workflows/ci.yml@main
-    secrets:
-      clientid_prod: '${{ secrets.PROD_JBOSSNETWORK_API_CLIENTID }}'
-      clientsecret_prod: '${{ secrets.PROD_JBOSSNETWORK_API_SECRET }}'
-      clientid_staging: '${{ secrets.STAGE_JBOSSNETWORK_API_CLIENTID }}'
-      clientsecret_staging: '${{ secrets.STAGE_JBOSSNETWORK_API_SECRET }}'
+    secrets: inherit
     with:
       fqcn: 'middleware_automation/common'
       molecule_tests: >-

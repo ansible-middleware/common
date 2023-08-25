@@ -9,14 +9,14 @@ on:
     - cron: '0 6 * * *'
 
 jobs:
-  CI:
+  ci:
     uses: ansible-middleware/github-actions/.github/workflows/ci.yml@main
+    secrets:
+      clientid_prod: '${{ secrets.PROD_JBOSSNETWORK_API_CLIENTID }}'
+      clientsecret_prod: '${{ secrets.PROD_JBOSSNETWORK_API_SECRET }}'
+      clientid_staging: '${{ secrets.STAGE_JBOSSNETWORK_API_CLIENTID }}'
+      clientsecret_staging: '${{ secrets.STAGE_JBOSSNETWORK_API_SECRET }}'
     with:
       fqcn: 'middleware_automation/common'
       molecule_tests: >-
         [ "prod_eap", "stage_eap" ]
-    secrets:
-      clientid_prod: ${{ secrets.PROD_JBOSSNETWORK_API_CLIENTID }}
-      clientsecret_prod: ${{ secrets.PROD_JBOSSNETWORK_API_SECRET }}
-      clientid_staging: ${{ secrets.STAGE_JBOSSNETWORK_API_CLIENTID }}
-      clientsecret_staging: ${{ secrets.STAGE_JBOSSNETWORK_API_SECRET }}

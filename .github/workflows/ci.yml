@@ -15,4 +15,3 @@ jobs:
       fqcn: 'middleware_automation/common'
       molecule_tests: >-
         [ "prod_eap", "stage_eap" ]
-    secrets: inherit

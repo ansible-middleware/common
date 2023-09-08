@@ -13,7 +13,7 @@
         product_version: '7.4'
         product_category: appplatform
       register: rhn_products
-      no_log: true
+      no_log: false
 
     - name: Search install zipfile
       ansible.builtin.set_fact:

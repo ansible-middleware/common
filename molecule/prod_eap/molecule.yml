@@ -17,6 +17,9 @@ provisioner:
       interpreter_python: auto_silent
     ssh_connection:
       pipelining: false
+  env:
+    REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID: "${REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID}"
+    REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET: "${REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET}"
   playbooks:
     converge: converge.yml
   inventory:

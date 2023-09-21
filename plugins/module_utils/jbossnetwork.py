@@ -16,12 +16,6 @@ from __future__ import absolute_import, division, print_function
 
 __metaclass__ = type
 
-try:
-    import requests
-    HAS_REQUESTS = True
-except ImportError:
-    HAS_REQUESTS = False
-
 from ansible_collections.middleware_automation.common.plugins.module_utils.constants import (
     QUERY_PAGE_SIZE,
     NEXT_CURSOR_FIELD,
@@ -36,7 +30,10 @@ from ansible_collections.middleware_automation.common.plugins.module_utils.const
     SEARCH_PARAM_NAME
 )
 
+import json
 from ansible.module_utils._text import to_native
+from ansible.module_utils.urls import Request
+from ansible.module_utils.six.moves.urllib.parse import urlencode
 
 
 def get_authenticated_session(module, sso_url, validate_certs, client_id, client_secret):
@@ -48,26 +45,22 @@ def get_authenticated_session(module, sso_url, validate_certs, client_id, client
         "grant_type": "client_credentials",
     }
 
-    # Obtain Access Token
-    if HAS_REQUESTS:
-        token_request = requests.post(
-            f"{sso_url}/auth/realms/redhat-external/protocol/openid-connect/token",
-            data=token_request_data, verify=validate_certs)
+    # Initialize Session
+    session = Request(validate_certs=validate_certs, headers={})
 
     try:
-        token_request.raise_for_status()
+        token_request = session.post(f"{sso_url}/auth/realms/redhat-external/protocol/openid-connect/token", data=urlencode(token_request_data))
+
     except Exception as err:
         module.fail_json(msg="Error Retrieving SSO Access Token: %s" % (to_native(err)))
 
-    access_token = token_request.json()["access_token"]
+    access_token = json.loads(token_request.read())["access_token"]
 
     # Setup Session
-    if HAS_REQUESTS:
-        session = requests.Session()
-        session.headers = {
-            "Authorization": f"Bearer {access_token}",
-            "Content-Type": "application/json",
-        }
+    session.headers = {
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type": "application/json",
+    }
 
     return session
 
@@ -107,10 +100,22 @@ def perform_search(session, url, validate_certs, params=None):
 
         params.update(pagination_params)
 
-        query_request = session.get(url, params=params, verify=validate_certs)
-        query_request.raise_for_status()
+        full_url = []
+        full_url.append(url)
 
-        query_result_json = query_request.json()
+        if len(params) > 0:
+
+            # Remove None Keys
+            none_keys = [k for (k, v) in params.items() if v is None]
+            for key in none_keys:
+                del params[key]
+
+            full_url.append("?")
+            full_url.append(urlencode(params))
+
+        query_request = session.get("".join(full_url))
+
+        query_result_json = json.loads(query_request.read())
 
         results.extend(
             query_result_json[RESULTS_FIELD])

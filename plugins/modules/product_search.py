@@ -43,8 +43,6 @@ author: Andrew Block (@sabre1041)
 short_description: Searches products from the JBoss Network API.
 description:
     - Searches products from the JBoss Network API.
-requirements:
-    - requests
 extends_documentation_fragment:
     - middleware_automation.common.jbossnetwork_connection_options
 """
@@ -116,11 +114,9 @@ results:
       type: str
 """
 
-import traceback
 import os
 import copy
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.basic import missing_required_lib
 from ansible.module_utils._text import to_native
 
 from ansible_collections.middleware_automation.common.plugins.module_utils.jbossnetwork import (
@@ -143,17 +139,6 @@ from ansible_collections.middleware_automation.common.plugins.module_utils.const
 )
 
 
-try:
-    import requests
-    requests_version = requests.__version__
-    HAS_REQUESTS = True
-except ImportError:
-    HAS_REQUESTS = False
-    REQUESTS_IMP_ERR = traceback.format_exc()
-else:
-    REQUESTS_IMP_ERR = None
-
-
 def argspec():
     argument_spec = copy.deepcopy(JBOSS_NETWORK_COMMON_ARGS_SPEC)
     argument_spec.update(copy.deepcopy(JBOSS_NETWORK_SEARCH_ARGS_SPEC))
@@ -166,9 +151,6 @@ def main():
         argument_spec=argspec(),
         add_file_common_args=False
     )
-
-    if not HAS_REQUESTS:
-        module.fail_json(msg=missing_required_lib("requests"), exception=REQUESTS_IMP_ERR)
 
     client_id = module.params.get('client_id')
     client_secret = module.params.get('client_secret')

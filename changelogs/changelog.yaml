@@ -29,3 +29,12 @@ releases:
     changes:
       release_summary: Internal release
     release_date: '2023-08-04'
+  1.1.3:
+    changes:
+      minor_changes:
+      - 'Remove use of Python requests for jbossnetworkapi `#16 <https://github.com/ansible-middleware/common/pull/16>`_
+
+        '
+    fragments:
+    - 16.yaml
+    release_date: '2023-09-22'

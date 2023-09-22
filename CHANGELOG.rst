@@ -5,6 +5,14 @@ middleware_automation.common Release Notes
 .. contents:: Topics
 
 
+v1.1.3
+======
+
+Minor Changes
+-------------
+
+- Remove use of Python requests for jbossnetworkapi `#16 <https://github.com/ansible-middleware/common/pull/16>`_
+
 v1.1.2
 ======
 

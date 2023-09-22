@@ -41,8 +41,6 @@ product_download -- Downloads products from the JBoss Network API.
     This module is part of the `middleware_automation.common collection <https://galaxy.ansible.com/middleware_automation/common>`_.
 
     To install it, use: :code:`ansible-galaxy collection install middleware\_automation.common`.
-    You need further requirements to be able to use this module,
-    see :ref:`Requirements <ansible_collections.middleware_automation.common.product_download_module_requirements>` for details.
 
     To use it in a playbook, specify: :code:`middleware_automation.common.product_download`.
 
@@ -68,14 +66,6 @@ Synopsis
 
 
 .. Requirements
-
-.. _ansible_collections.middleware_automation.common.product_download_module_requirements:
-
-Requirements
-------------
-The below requirements are needed on the host that executes this module.
-
-- requests
 
 
 

@@ -13,6 +13,11 @@ Release Summary
 
 Internal release
 
+Minor Changes
+-------------
+
+- Remove use of Python requests for jbossnetworkapi `#16 <https://github.com/ansible-middleware/common/pull/16>`_
+
 v1.1.1
 ======
 

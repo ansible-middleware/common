@@ -51,7 +51,8 @@ Clone the repository, checkout the tag you want to build, or pick the main branc
 
 #### Python:
 
-* [requests](https://requests.readthedocs.io/en/latest/)
+* [jmespath](https://jmespath.org/)
+* [lxml](https://lxml.de/)
 
 To install all the dependencies via galaxy:
 

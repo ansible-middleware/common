@@ -5,8 +5,11 @@ middleware_automation.common Release Notes
 .. contents:: Topics
 
 
-v1.1.3-devel
+v1.1.4-devel
 ============
+
+v1.1.3
+======
 
 Minor Changes
 -------------

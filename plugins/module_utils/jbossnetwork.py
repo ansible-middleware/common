@@ -46,10 +46,10 @@ def get_authenticated_session(module, sso_url, validate_certs, client_id, client
     }
 
     # Initialize Session
-    session = Request(validate_certs=validate_certs, headers={})
+    session = Request(validate_certs=validate_certs, headers={0})
 
     try:
-        token_request = session.post("{}/auth/realms/redhat-external/protocol/openid-connect/token".format(sso_url), data=urlencode(token_request_data))
+        token_request = session.post("{0}/auth/realms/redhat-external/protocol/openid-connect/token".format(sso_url), data=urlencode(token_request_data))
 
     except Exception as err:
         module.fail_json(msg="Error Retrieving SSO Access Token: %s" % (to_native(err)))
@@ -58,7 +58,7 @@ def get_authenticated_session(module, sso_url, validate_certs, client_id, client
 
     # Setup Session
     session.headers = {
-        "Authorization": "Bearer {}".format(access_token),
+        "Authorization": "Bearer {0}".format(access_token),
         "Content-Type": "application/json",
     }
 

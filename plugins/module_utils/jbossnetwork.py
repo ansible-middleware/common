@@ -46,7 +46,7 @@ def get_authenticated_session(module, sso_url, validate_certs, client_id, client
     }
 
     # Initialize Session
-    session = Request(validate_certs=validate_certs, headers={0})
+    session = Request(validate_certs=validate_certs, headers={})
 
     try:
         token_request = session.post("{0}/auth/realms/redhat-external/protocol/openid-connect/token".format(sso_url), data=urlencode(token_request_data))

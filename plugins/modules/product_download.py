@@ -250,7 +250,7 @@ def main():
     )
 
     if os.path.exists(dest) and not force:
-        file_args = module.load_file_common_arguments(module.params, path=dest)
+        file_args = module.load_file_common_arguments(module.params)
         result['changed'] = module.set_fs_attributes_if_different(file_args, False)
 
         if result['changed']:
@@ -285,7 +285,7 @@ def main():
     except Exception as err:
         module.fail_json(msg="Error Downloading %s: %s" % (search_results[0]['title'], to_native(err)))
 
-    file_args = module.load_file_common_arguments(module.params, path=dest)
+    file_args = module.load_file_common_arguments(module.params)
     result['changed'] = module.set_fs_attributes_if_different(file_args, result['changed'])
 
     try:

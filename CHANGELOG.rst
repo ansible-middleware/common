@@ -5,6 +5,14 @@ middleware_automation.common Release Notes
 .. contents:: Topics
 
 
+v1.1.4
+======
+
+Bugfixes
+--------
+
+- Ensure compatibility with python 2.7 / ansible 2.9 `#19 <https://github.com/ansible-middleware/common/pull/19>`_
+
 v1.1.3
 ======
 

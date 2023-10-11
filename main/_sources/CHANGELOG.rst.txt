@@ -8,6 +8,11 @@ middleware_automation.common Release Notes
 v1.1.4-devel
 ============
 
+Bugfixes
+--------
+
+- Convert f-strings to str.format() `#19 <https://github.com/ansible-middleware/common/pull/19>`_
+
 v1.1.3
 ======
 

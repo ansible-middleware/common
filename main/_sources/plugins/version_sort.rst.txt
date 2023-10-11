@@ -7,7 +7,7 @@
     :trim:
 
 .. meta::
-  :antsibull-docs: 2.4.0
+  :antsibull-docs: 2.5.0
 
 .. Anchors
 
@@ -23,7 +23,7 @@ version_sort -- Sort a list according to version order instead of pure alphabeti
 .. Collection note
 
 .. note::
-    This filter plugin is part of the `middleware_automation.common collection <https://galaxy.ansible.com/middleware_automation/common>`_.
+    This filter plugin is part of the `middleware_automation.common collection <https://galaxy.ansible.com/ui/repo/published/middleware_automation/common/>`_.
 
     It is not included in ``ansible-core``.
     To check whether it is installed, run :code:`ansible-galaxy collection list`.

@@ -7,7 +7,7 @@
     :trim:
 
 .. meta::
-  :antsibull-docs: 2.4.0
+  :antsibull-docs: 2.5.0
 
 .. Anchors
 
@@ -23,7 +23,7 @@ product_download -- Downloads products from the JBoss Network API.
 .. Collection note
 
 .. note::
-    This module is part of the `middleware_automation.common collection <https://galaxy.ansible.com/middleware_automation/common>`_.
+    This module is part of the `middleware_automation.common collection <https://galaxy.ansible.com/ui/repo/published/middleware_automation/common/>`_.
 
     It is not included in ``ansible-core``.
     To check whether it is installed, run :code:`ansible-galaxy collection list`.

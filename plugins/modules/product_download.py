@@ -272,14 +272,14 @@ def main():
             module.fail_json(msg="Destination %s is not writable" % (os.path.dirname(dest)), **result)
 
     try:
-        with session.get(search_results[0]["download_path"], follow_redirects=True, headers={"User-Agent": "product_download"}) as r:
-            chunk_size = 8192
-            with open(dest, 'wb') as f:
-                while True:
-                    chunk = r.read(chunk_size)
-                    if not chunk:
-                        break
-                    f.write(chunk)
+        r = session.get(search_results[0]["download_path"], follow_redirects=True, headers={"User-Agent": "product_download"})
+        chunk_size = 8192
+        with open(dest, 'wb') as f:
+            while True:
+                chunk = r.read(chunk_size)
+                if not chunk:
+                    break
+                f.write(chunk)
 
         result['changed'] = True
     except Exception as err:

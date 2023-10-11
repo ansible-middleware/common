@@ -1,16 +1,15 @@
 ---
 - name: Converge
-  hosts: all
-  gather_facts: yes
+  hosts: localhost
+  gather_facts: no
   vars:
-        client_id: "{{ lookup('env', 'STAGE_JBOSSNETWORK_API_CLIENTID') }}"
-        client_secret: "{{ lookup('env', 'STAGE_JBOSSNETWORK_API_SECRET') }}"
+    client_id: "{{ lookup('env', 'STAGE_JBOSSNETWORK_API_CLIENTID') }}"
+    client_secret: "{{ lookup('env', 'STAGE_JBOSSNETWORK_API_SECRET') }}"
   tasks:
     - name: Execute scenario if staging credentials are provided
       when:
         - client_id is defined and client_password is defined
       block:
-
         - name: Search EAP Product
           middleware_automation.common.product_search:
             api_url: "https://jbossnetwork.stage.api.redhat.com"

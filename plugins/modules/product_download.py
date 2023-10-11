@@ -186,33 +186,33 @@ def main():
 
     if not client_id:
         module.fail_json(msg=str("Client ID not specified and unable to determine Client ID "
-                                 f"from '{REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID_ENV_VAR}' environment variable."))
+                                 "from '{0}' environment variable.".format(REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID_ENV_VAR)))
 
     if not client_secret:
         client_secret = os.environ.get(REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET_ENV_VAR)
 
     if not client_secret:
         module.fail_json(msg=str("Client Secret not specified and unable to determine Client Secret "
-                                 f"from '{REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET_ENV_VAR}' environment variable."))
+                                 "from '{0}' environment variable.".format(REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET_ENV_VAR)))
 
     if not dest:
         module.fail_json(msg=str("Destination path not provided"))
 
     session = get_authenticated_session(module, sso_url, validate_certs, client_id, client_secret)
 
-    api_base_url = f"{api_url}{API_SERVICE_PATH}"
+    api_base_url = "{0}{1}".format(api_url, API_SERVICE_PATH)
 
     if product_category is not None:
         # List Product Categories
         product_categories = []
 
         try:
-            product_categories = perform_search(session, f"{api_base_url}{LIST_PRODUCT_CATEGORIES_ENDPOINT}", validate_certs)
+            product_categories = perform_search(session, "{0}{1}".format(api_base_url, LIST_PRODUCT_CATEGORIES_ENDPOINT), validate_certs)
         except Exception as err:
             module.fail_json(msg="Error Listing Available Product Categories: %s" % (to_native(err)))
 
         if product_category not in product_categories:
-            module.fail_json(msg=f"'{product_category}' is not a valid Product Category")
+            module.fail_json(msg="'{0}' is not a valid Product Category".format(product_category))
 
     # Search for Products
     search_results = []
@@ -220,7 +220,7 @@ def main():
     search_params = generate_search_params(product_category, product_id, product_type, product_version)
 
     try:
-        search_results = perform_search(session, f"{api_base_url}{SEARCH_ENDPOINT}", validate_certs, search_params)
+        search_results = perform_search(session, "{0}{1}".format(api_base_url, SEARCH_ENDPOINT), validate_certs, search_params)
     except Exception as err:
         module.fail_json(msg="Error Searching for Products: %s" % (to_native(err)))
 
@@ -229,11 +229,11 @@ def main():
     # Print error with results if more than 1 exists
     if products_found != 1:
         msg = [
-            (f"Error: Unable to locate a single product to download. '{products_found}' products found.")
+            ("Error: Unable to locate a single product to download. '{0}' products found.".format(products_found))
         ]
 
         for productIdx, product in enumerate(search_results):
-            msg.append(f"{productIdx+1} - ({product['id']}) {product['title']}.")
+            msg.append("{0} - ({1}) {2}.".format(productIdx + 1, product['id'], product['title']))
 
         module.fail_json(msg=" ".join(msg))
 
@@ -250,7 +250,7 @@ def main():
     )
 
     if os.path.exists(dest) and not force:
-        file_args = module.load_file_common_arguments(module.params, path=dest)
+        file_args = module.load_file_common_arguments(module.params)
         result['changed'] = module.set_fs_attributes_if_different(file_args, False)
 
         if result['changed']:
@@ -272,20 +272,20 @@ def main():
             module.fail_json(msg="Destination %s is not writable" % (os.path.dirname(dest)), **result)
 
     try:
-        with session.get(search_results[0]["download_path"], follow_redirects=True, headers={"User-Agent": "product_download"}) as r:
-            chunk_size = 8192
-            with open(dest, 'wb') as f:
-                while True:
-                    chunk = r.read(chunk_size)
-                    if not chunk:
-                        break
-                    f.write(chunk)
+        r = session.get(search_results[0]["download_path"], follow_redirects=True, headers={"User-Agent": "product_download"})
+        chunk_size = 8192
+        with open(dest, 'wb') as f:
+            while True:
+                chunk = r.read(chunk_size)
+                if not chunk:
+                    break
+                f.write(chunk)
 
         result['changed'] = True
     except Exception as err:
         module.fail_json(msg="Error Downloading %s: %s" % (search_results[0]['title'], to_native(err)))
 
-    file_args = module.load_file_common_arguments(module.params, path=dest)
+    file_args = module.load_file_common_arguments(module.params)
     result['changed'] = module.set_fs_attributes_if_different(file_args, result['changed'])
 
     try:

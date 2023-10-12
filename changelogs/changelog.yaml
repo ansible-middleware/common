@@ -1,12 +1,16 @@
 ancestor: null
 releases:
-  0.0.1:
-    release_date: '2023-03-02'
   1.0.0:
+    changes:
+      release_summary: Initial release with JBossNetwork API modules
     release_date: '2023-03-07'
   1.0.1:
+    changes:
+      release_summary: Internal release
     release_date: '2023-03-09'
   1.0.2:
+    changes:
+      release_summary: Internal release
     release_date: '2023-03-09'
   1.1.0:
     changes:

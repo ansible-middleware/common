@@ -9,7 +9,7 @@ Collection containing common utilities to support Ansible Middleware automation
 <!--start requires_ansible-->
 ## Ansible version compatibility
 
-This collection has been tested against following Ansible versions: **>=2.9.10**.
+This collection has been tested against following Ansible versions: **>=2.13.0**.
 
 ## Python version compatibility
 

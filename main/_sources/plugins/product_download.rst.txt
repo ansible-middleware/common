@@ -7,7 +7,7 @@
     :trim:
 
 .. meta::
-  :antsibull-docs: 2.5.0
+  :antsibull-docs: 2.9.0
 
 .. Anchors
 
@@ -65,778 +65,325 @@ Synopsis
 Parameters
 ----------
 
-.. tabularcolumns:: \X{1}{3}\X{2}{3}
+.. raw:: html
+
+  <table class="colwidths-auto ansible-option-table docutils align-default" style="width: 100%">
+  <thead>
+  <tr class="row-odd">
+    <th class="head"><p>Parameter</p></th>
+    <th class="head"><p>Comments</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-api_url"></div>
+      <p class="ansible-option-title"><strong>api_url</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-api_url" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Address of the JBoss Network API.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-value literal notranslate ansible-option-default">&#34;https://jbossnetwork.api.redhat.com&#34;</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-attributes"></div>
+      <div class="ansibleOptionAnchor" id="parameter-attr"></div>
+      <p class="ansible-option-title"><strong>attributes</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-attributes" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line"><span class="ansible-option-aliases">aliases: attr</span></p>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>The attributes the resulting filesystem object should have.</p>
+      <p>To get supported flags look at the man page for <em>chattr</em> on the target system.</p>
+      <p>This string should contain the attributes in the same order as the one displayed by <em>lsattr</em>.</p>
+      <p>The <code class='docutils literal notranslate'>=</code> operator is assumed as default, otherwise <code class='docutils literal notranslate'>+</code> or <code class='docutils literal notranslate'>-</code> operators need to be included in the string.</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-client_id"></div>
+      <p class="ansible-option-title"><strong>client_id</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-client_id" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Client ID associated with to download a product from the JBoss Network API.</p>
+      <p>If value not set, will try environment variable <code class='docutils literal notranslate'>REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-client_secret"></div>
+      <p class="ansible-option-title"><strong>client_secret</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-client_secret" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Client Secret associated with to download a product from the JBoss Network API.</p>
+      <p>If value not set, will try environment variable <code class='docutils literal notranslate'>REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-dest"></div>
+      <p class="ansible-option-title"><strong>dest</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-dest" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+        / <span class="ansible-option-required">required</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Absolute  .</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-force"></div>
+      <p class="ansible-option-title"><strong>force</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-force" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">boolean</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>If <code class='docutils literal notranslate'>true</code> and <code class='docutils literal notranslate'>dest</code> is not a directory, will download the file every time and replace the file if the contents change. If <code class='docutils literal notranslate'>false</code>, the file will only be downloaded if the destination does not exist.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+      <ul class="simple">
+        <li><p><code class="ansible-value literal notranslate ansible-option-default-bold"><strong>false</strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+        <li><p><code class="ansible-value literal notranslate ansible-option-choices-entry">true</code></p></li>
+      </ul>
+
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-group"></div>
+      <p class="ansible-option-title"><strong>group</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-group" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Name of the group that should own the filesystem object, as would be fed to <em>chown</em>.</p>
+      <p>When left unspecified, it uses the current group of the current user unless you are root, in which case it can preserve the previous ownership.</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-mode"></div>
+      <p class="ansible-option-title"><strong>mode</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-mode" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">any</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>The permissions the resulting filesystem object should have.</p>
+      <p>For those used to <em>/usr/bin/chmod</em> remember that modes are actually octal numbers. You must give Ansible enough information to parse them correctly. For consistent results, quote octal numbers (for example, <code class="ansible-value literal notranslate">&#x27;644&#x27;</code> or <code class="ansible-value literal notranslate">&#x27;1777&#x27;</code>) so Ansible receives a string and can do its own conversion from string into number. Adding a leading zero (for example, <code class="ansible-value literal notranslate">0755</code>) works sometimes, but can fail in loops and some other circumstances.</p>
+      <p>Giving Ansible a number without following either of these rules will end up with a decimal number which will have unexpected results.</p>
+      <p>As of Ansible 1.8, the mode may be specified as a symbolic mode (for example, <code class="ansible-value literal notranslate">u+rwx</code> or <code class="ansible-value literal notranslate">u=rw,g=r,o=r</code>).</p>
+      <p>If <code class="ansible-option literal notranslate"><strong><a class="reference internal" href="#parameter-mode"><span class="std std-ref"><span class="pre">mode</span></span></a></strong></code> is not specified and the destination filesystem object <b>does not</b> exist, the default <code class='docutils literal notranslate'>umask</code> on the system will be used when setting the mode for the newly created filesystem object.</p>
+      <p>If <code class="ansible-option literal notranslate"><strong><a class="reference internal" href="#parameter-mode"><span class="std std-ref"><span class="pre">mode</span></span></a></strong></code> is not specified and the destination filesystem object <b>does</b> exist, the mode of the existing filesystem object will be used.</p>
+      <p>Specifying <code class="ansible-option literal notranslate"><strong><a class="reference internal" href="#parameter-mode"><span class="std std-ref"><span class="pre">mode</span></span></a></strong></code> is the best way to ensure filesystem objects are created with the correct permissions. See CVE-2020-1736 for further details.</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-owner"></div>
+      <p class="ansible-option-title"><strong>owner</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-owner" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Name of the user that should own the filesystem object, as would be fed to <em>chown</em>.</p>
+      <p>When left unspecified, it uses the current user unless you are root, in which case it can preserve the previous ownership.</p>
+      <p>Specifying a numeric username will be assumed to be a user ID and not a username. Avoid numeric usernames to avoid this confusion.</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-product_category"></div>
+      <p class="ansible-option-title"><strong>product_category</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-product_category" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Type of the Product Category</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-product_id"></div>
+      <p class="ansible-option-title"><strong>product_id</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-product_id" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Product Id for the Redhat customer portal</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-product_type"></div>
+      <p class="ansible-option-title"><strong>product_type</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-product_type" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Type of the Product</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-product_version"></div>
+      <p class="ansible-option-title"><strong>product_version</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-product_version" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Product Version to be downloaded.</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-selevel"></div>
+      <p class="ansible-option-title"><strong>selevel</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-selevel" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>The level part of the SELinux filesystem object context.</p>
+      <p>This is the MLS/MCS attribute, sometimes known as the <code class='docutils literal notranslate'>range</code>.</p>
+      <p>When set to <code class="ansible-value literal notranslate">_default</code>, it will use the <code class='docutils literal notranslate'>level</code> portion of the policy if available.</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-serole"></div>
+      <p class="ansible-option-title"><strong>serole</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-serole" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>The role part of the SELinux filesystem object context.</p>
+      <p>When set to <code class="ansible-value literal notranslate">_default</code>, it will use the <code class='docutils literal notranslate'>role</code> portion of the policy if available.</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-setype"></div>
+      <p class="ansible-option-title"><strong>setype</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-setype" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>The type part of the SELinux filesystem object context.</p>
+      <p>When set to <code class="ansible-value literal notranslate">_default</code>, it will use the <code class='docutils literal notranslate'>type</code> portion of the policy if available.</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-seuser"></div>
+      <p class="ansible-option-title"><strong>seuser</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-seuser" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>The user part of the SELinux filesystem object context.</p>
+      <p>By default it uses the <code class="ansible-value literal notranslate">system</code> policy, where applicable.</p>
+      <p>When set to <code class="ansible-value literal notranslate">_default</code>, it will use the <code class='docutils literal notranslate'>user</code> portion of the policy if available.</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-sso_url"></div>
+      <p class="ansible-option-title"><strong>sso_url</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-sso_url" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Address of the Red Hat SSO Server.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-value literal notranslate ansible-option-default">&#34;https://sso.redhat.com&#34;</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-unsafe_writes"></div>
+      <p class="ansible-option-title"><strong>unsafe_writes</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-unsafe_writes" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">boolean</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Influence when to use atomic operation to prevent data corruption or inconsistent reads from the target filesystem object.</p>
+      <p>By default this module uses atomic operations to prevent data corruption or inconsistent reads from the target filesystem objects, but sometimes systems are configured or just broken in ways that prevent this. One example is docker mounted filesystem objects, which cannot be updated atomically from inside the container and can only be written in an unsafe manner.</p>
+      <p>This option allows Ansible to fall back to unsafe methods of updating filesystem objects when atomic operations fail (however, it doesn&#x27;t force Ansible to perform unsafe writes).</p>
+      <p>IMPORTANT! Unsafe writes are subject to race conditions and can lead to data corruption.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+      <ul class="simple">
+        <li><p><code class="ansible-value literal notranslate ansible-option-default-bold"><strong>false</strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+        <li><p><code class="ansible-value literal notranslate ansible-option-choices-entry">true</code></p></li>
+      </ul>
+
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-validate_certs"></div>
+      <p class="ansible-option-title"><strong>validate_certs</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-validate_certs" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">boolean</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>If <code class='docutils literal notranslate'>false</code>, SSL certificates will not be validated.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+      <ul class="simple">
+        <li><p><code class="ansible-value literal notranslate ansible-option-choices-entry">false</code></p></li>
+        <li><p><code class="ansible-value literal notranslate ansible-option-default-bold"><strong>true</strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+      </ul>
+
+    </div></td>
+  </tr>
+  </tbody>
+  </table>
 
-.. list-table::
-  :width: 100%
-  :widths: auto
-  :header-rows: 1
-  :class: longtable ansible-option-table
-
-  * - Parameter
-    - Comments
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-api_url"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-api_url:
-
-      .. rst-class:: ansible-option-title
-
-      **api_url**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-api_url" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Address of the JBoss Network API.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-default-bold:`Default:` :ansible-option-default:`"https://jbossnetwork.api.redhat.com"`
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-attributes"></div>
-        <div class="ansibleOptionAnchor" id="parameter-attr"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-attr:
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-attributes:
-
-      .. rst-class:: ansible-option-title
-
-      **attributes**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-attributes" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-aliases:`aliases: attr`
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      The attributes the resulting filesystem object should have.
-
-      To get supported flags look at the man page for \ :emphasis:`chattr`\  on the target system.
-
-      This string should contain the attributes in the same order as the one displayed by \ :emphasis:`lsattr`\ .
-
-      The \ :literal:`=`\  operator is assumed as default, otherwise \ :literal:`+`\  or \ :literal:`-`\  operators need to be included in the string.
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-client_id"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-client_id:
-
-      .. rst-class:: ansible-option-title
-
-      **client_id**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-client_id" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Client ID associated with to download a product from the JBoss Network API.
-
-      If value not set, will try environment variable \ :literal:`REDHAT\_PRODUCT\_DOWNLOAD\_CLIENT\_ID`\ 
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-client_secret"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-client_secret:
-
-      .. rst-class:: ansible-option-title
-
-      **client_secret**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-client_secret" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Client Secret associated with to download a product from the JBoss Network API.
-
-      If value not set, will try environment variable \ :literal:`REDHAT\_PRODUCT\_DOWNLOAD\_CLIENT\_SECRET`\ 
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-dest"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-dest:
-
-      .. rst-class:: ansible-option-title
-
-      **dest**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-dest" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string` / :ansible-option-required:`required`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Absolute  .
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-force"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-force:
-
-      .. rst-class:: ansible-option-title
-
-      **force**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-force" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`boolean`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      If \ :literal:`true`\  and \ :literal:`dest`\  is not a directory, will download the file every time and replace the file if the contents change. If \ :literal:`false`\ , the file will only be downloaded if the destination does not exist.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-choices:`Choices:`
-
-      - :ansible-option-choices-entry-default:`false` :ansible-option-choices-default-mark:`← (default)`
-      - :ansible-option-choices-entry:`true`
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-group"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-group:
-
-      .. rst-class:: ansible-option-title
-
-      **group**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-group" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Name of the group that should own the filesystem object, as would be fed to \ :emphasis:`chown`\ .
-
-      When left unspecified, it uses the current group of the current user unless you are root, in which case it can preserve the previous ownership.
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-mode"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-mode:
-
-      .. rst-class:: ansible-option-title
-
-      **mode**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-mode" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`any`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      The permissions the resulting filesystem object should have.
-
-      For those used to \ :emphasis:`/usr/bin/chmod`\  remember that modes are actually octal numbers. You must give Ansible enough information to parse them correctly. For consistent results, quote octal numbers (for example, \ :literal:`'644'`\  or \ :literal:`'1777'`\ ) so Ansible receives a string and can do its own conversion from string into number. Adding a leading zero (for example, \ :literal:`0755`\ ) works sometimes, but can fail in loops and some other circumstances.
-
-      Giving Ansible a number without following either of these rules will end up with a decimal number which will have unexpected results.
-
-      As of Ansible 1.8, the mode may be specified as a symbolic mode (for example, \ :literal:`u+rwx`\  or \ :literal:`u=rw,g=r,o=r`\ ).
-
-      If \ :literal:`mode`\  is not specified and the destination filesystem object \ :strong:`does not`\  exist, the default \ :literal:`umask`\  on the system will be used when setting the mode for the newly created filesystem object.
-
-      If \ :literal:`mode`\  is not specified and the destination filesystem object \ :strong:`does`\  exist, the mode of the existing filesystem object will be used.
-
-      Specifying \ :literal:`mode`\  is the best way to ensure filesystem objects are created with the correct permissions. See CVE-2020-1736 for further details.
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-owner"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-owner:
-
-      .. rst-class:: ansible-option-title
-
-      **owner**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-owner" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Name of the user that should own the filesystem object, as would be fed to \ :emphasis:`chown`\ .
-
-      When left unspecified, it uses the current user unless you are root, in which case it can preserve the previous ownership.
-
-      Specifying a numeric username will be assumed to be a user ID and not a username. Avoid numeric usernames to avoid this confusion.
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-product_category"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-product_category:
-
-      .. rst-class:: ansible-option-title
-
-      **product_category**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-product_category" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Type of the Product Category
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-product_id"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-product_id:
-
-      .. rst-class:: ansible-option-title
-
-      **product_id**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-product_id" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Product Id for the Redhat customer portal
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-product_type"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-product_type:
-
-      .. rst-class:: ansible-option-title
-
-      **product_type**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-product_type" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Type of the Product
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-product_version"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-product_version:
-
-      .. rst-class:: ansible-option-title
-
-      **product_version**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-product_version" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Product Version to be downloaded.
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-selevel"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-selevel:
-
-      .. rst-class:: ansible-option-title
-
-      **selevel**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-selevel" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      The level part of the SELinux filesystem object context.
-
-      This is the MLS/MCS attribute, sometimes known as the \ :literal:`range`\ .
-
-      When set to \ :literal:`\_default`\ , it will use the \ :literal:`level`\  portion of the policy if available.
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-serole"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-serole:
-
-      .. rst-class:: ansible-option-title
-
-      **serole**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-serole" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      The role part of the SELinux filesystem object context.
-
-      When set to \ :literal:`\_default`\ , it will use the \ :literal:`role`\  portion of the policy if available.
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-setype"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-setype:
-
-      .. rst-class:: ansible-option-title
-
-      **setype**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-setype" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      The type part of the SELinux filesystem object context.
-
-      When set to \ :literal:`\_default`\ , it will use the \ :literal:`type`\  portion of the policy if available.
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-seuser"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-seuser:
-
-      .. rst-class:: ansible-option-title
-
-      **seuser**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-seuser" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      The user part of the SELinux filesystem object context.
-
-      By default it uses the \ :literal:`system`\  policy, where applicable.
-
-      When set to \ :literal:`\_default`\ , it will use the \ :literal:`user`\  portion of the policy if available.
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-sso_url"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-sso_url:
-
-      .. rst-class:: ansible-option-title
-
-      **sso_url**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-sso_url" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Address of the Red Hat SSO Server.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-default-bold:`Default:` :ansible-option-default:`"https://sso.redhat.com"`
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-unsafe_writes"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-unsafe_writes:
-
-      .. rst-class:: ansible-option-title
-
-      **unsafe_writes**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-unsafe_writes" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`boolean`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Influence when to use atomic operation to prevent data corruption or inconsistent reads from the target filesystem object.
-
-      By default this module uses atomic operations to prevent data corruption or inconsistent reads from the target filesystem objects, but sometimes systems are configured or just broken in ways that prevent this. One example is docker mounted filesystem objects, which cannot be updated atomically from inside the container and can only be written in an unsafe manner.
-
-      This option allows Ansible to fall back to unsafe methods of updating filesystem objects when atomic operations fail (however, it doesn't force Ansible to perform unsafe writes).
-
-      IMPORTANT! Unsafe writes are subject to race conditions and can lead to data corruption.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-choices:`Choices:`
-
-      - :ansible-option-choices-entry-default:`false` :ansible-option-choices-default-mark:`← (default)`
-      - :ansible-option-choices-entry:`true`
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-validate_certs"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__parameter-validate_certs:
-
-      .. rst-class:: ansible-option-title
-
-      **validate_certs**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-validate_certs" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`boolean`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      If \ :literal:`false`\ , SSL certificates will not be validated.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-choices:`Choices:`
-
-      - :ansible-option-choices-entry:`false`
-      - :ansible-option-choices-entry-default:`true` :ansible-option-choices-default-mark:`← (default)`
-
-
-      .. raw:: html
-
-        </div>
 
 
 .. Attributes
@@ -875,510 +422,183 @@ Return Values
 -------------
 Common return values are documented :ref:`here <common_return_values>`, the following are the fields unique to this module:
 
-.. tabularcolumns:: \X{1}{3}\X{2}{3}
-
-.. list-table::
-  :width: 100%
-  :widths: auto
-  :header-rows: 1
-  :class: longtable ansible-option-table
-
-  * - Key
-    - Description
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-dest"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__return-dest:
-
-      .. rst-class:: ansible-option-title
-
-      **dest**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-dest" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      destination file/path
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-      .. rst-class:: ansible-option-line
-      .. rst-class:: ansible-option-sample
-
-      :ansible-option-sample-bold:`Sample:` :ansible-rv-sample-value:`"/path/to/file.txt"`
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-failed"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__return-failed:
-
-      .. rst-class:: ansible-option-title
-
-      **failed**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-failed" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`boolean`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      whether an error occurred downloading the resource
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-      .. rst-class:: ansible-option-line
-      .. rst-class:: ansible-option-sample
-
-      :ansible-option-sample-bold:`Sample:` :ansible-rv-sample-value:`false`
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-gid"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__return-gid:
-
-      .. rst-class:: ansible-option-title
-
-      **gid**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-gid" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`integer`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      group id of the file
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-      .. rst-class:: ansible-option-line
-      .. rst-class:: ansible-option-sample
-
-      :ansible-option-sample-bold:`Sample:` :ansible-rv-sample-value:`100`
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-group"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__return-group:
-
-      .. rst-class:: ansible-option-title
-
-      **group**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-group" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      group of the file
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-      .. rst-class:: ansible-option-line
-      .. rst-class:: ansible-option-sample
-
-      :ansible-option-sample-bold:`Sample:` :ansible-rv-sample-value:`"httpd"`
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-md5sum"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__return-md5sum:
-
-      .. rst-class:: ansible-option-title
-
-      **md5sum**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-md5sum" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      md5 checksum of the file after download
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` when supported
-
-      .. rst-class:: ansible-option-line
-      .. rst-class:: ansible-option-sample
-
-      :ansible-option-sample-bold:`Sample:` :ansible-rv-sample-value:`"2a5aeecc61dc98c4d780b14b330e3282"`
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-mode"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__return-mode:
-
-      .. rst-class:: ansible-option-title
-
-      **mode**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-mode" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      permissions of the target
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-      .. rst-class:: ansible-option-line
-      .. rst-class:: ansible-option-sample
-
-      :ansible-option-sample-bold:`Sample:` :ansible-rv-sample-value:`"0644"`
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-msg"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__return-msg:
-
-      .. rst-class:: ansible-option-title
-
-      **msg**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-msg" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      the HTTP message from the request
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` always
-
-      .. rst-class:: ansible-option-line
-      .. rst-class:: ansible-option-sample
-
-      :ansible-option-sample-bold:`Sample:` :ansible-rv-sample-value:`"OK (unknown bytes)"`
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-owner"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__return-owner:
-
-      .. rst-class:: ansible-option-title
-
-      **owner**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-owner" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      owner of the file
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-      .. rst-class:: ansible-option-line
-      .. rst-class:: ansible-option-sample
-
-      :ansible-option-sample-bold:`Sample:` :ansible-rv-sample-value:`"httpd"`
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-size"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__return-size:
-
-      .. rst-class:: ansible-option-title
-
-      **size**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-size" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`integer`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      size of the target
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-      .. rst-class:: ansible-option-line
-      .. rst-class:: ansible-option-sample
-
-      :ansible-option-sample-bold:`Sample:` :ansible-rv-sample-value:`1220`
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-state"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__return-state:
-
-      .. rst-class:: ansible-option-title
-
-      **state**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-state" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      state of the target
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-      .. rst-class:: ansible-option-line
-      .. rst-class:: ansible-option-sample
-
-      :ansible-option-sample-bold:`Sample:` :ansible-rv-sample-value:`"file"`
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-uid"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_download_module__return-uid:
-
-      .. rst-class:: ansible-option-title
-
-      **uid**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-uid" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`integer`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      owner id of the file, after execution
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-      .. rst-class:: ansible-option-line
-      .. rst-class:: ansible-option-sample
-
-      :ansible-option-sample-bold:`Sample:` :ansible-rv-sample-value:`100`
-
-
-      .. raw:: html
-
-        </div>
+.. raw:: html
+
+  <table class="colwidths-auto ansible-option-table docutils align-default" style="width: 100%">
+  <thead>
+  <tr class="row-odd">
+    <th class="head"><p>Key</p></th>
+    <th class="head"><p>Description</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-dest"></div>
+      <p class="ansible-option-title"><strong>dest</strong></p>
+      <a class="ansibleOptionLink" href="#return-dest" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>destination file/path</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+      <p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-value literal notranslate ansible-option-sample">&#34;/path/to/file.txt&#34;</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-failed"></div>
+      <p class="ansible-option-title"><strong>failed</strong></p>
+      <a class="ansibleOptionLink" href="#return-failed" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">boolean</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>whether an error occurred downloading the resource</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+      <p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-value literal notranslate ansible-option-sample">false</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-gid"></div>
+      <p class="ansible-option-title"><strong>gid</strong></p>
+      <a class="ansibleOptionLink" href="#return-gid" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">integer</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>group id of the file</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+      <p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-value literal notranslate ansible-option-sample">100</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-group"></div>
+      <p class="ansible-option-title"><strong>group</strong></p>
+      <a class="ansibleOptionLink" href="#return-group" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>group of the file</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+      <p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-value literal notranslate ansible-option-sample">&#34;httpd&#34;</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-md5sum"></div>
+      <p class="ansible-option-title"><strong>md5sum</strong></p>
+      <a class="ansibleOptionLink" href="#return-md5sum" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>md5 checksum of the file after download</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> when supported</p>
+      <p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-value literal notranslate ansible-option-sample">&#34;2a5aeecc61dc98c4d780b14b330e3282&#34;</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-mode"></div>
+      <p class="ansible-option-title"><strong>mode</strong></p>
+      <a class="ansibleOptionLink" href="#return-mode" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>permissions of the target</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+      <p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-value literal notranslate ansible-option-sample">&#34;0644&#34;</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-msg"></div>
+      <p class="ansible-option-title"><strong>msg</strong></p>
+      <a class="ansibleOptionLink" href="#return-msg" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>the HTTP message from the request</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> always</p>
+      <p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-value literal notranslate ansible-option-sample">&#34;OK (unknown bytes)&#34;</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-owner"></div>
+      <p class="ansible-option-title"><strong>owner</strong></p>
+      <a class="ansibleOptionLink" href="#return-owner" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>owner of the file</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+      <p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-value literal notranslate ansible-option-sample">&#34;httpd&#34;</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-size"></div>
+      <p class="ansible-option-title"><strong>size</strong></p>
+      <a class="ansibleOptionLink" href="#return-size" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">integer</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>size of the target</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+      <p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-value literal notranslate ansible-option-sample">1220</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-state"></div>
+      <p class="ansible-option-title"><strong>state</strong></p>
+      <a class="ansibleOptionLink" href="#return-state" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>state of the target</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+      <p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-value literal notranslate ansible-option-sample">&#34;file&#34;</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-uid"></div>
+      <p class="ansible-option-title"><strong>uid</strong></p>
+      <a class="ansibleOptionLink" href="#return-uid" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">integer</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>owner id of the file, after execution</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+      <p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-value literal notranslate ansible-option-sample">100</code></p>
+    </div></td>
+  </tr>
+  </tbody>
+  </table>
 
 
 

@@ -7,7 +7,7 @@
     :trim:
 
 .. meta::
-  :antsibull-docs: 2.5.0
+  :antsibull-docs: 2.9.0
 
 .. Anchors
 
@@ -65,342 +65,146 @@ Synopsis
 Parameters
 ----------
 
-.. tabularcolumns:: \X{1}{3}\X{2}{3}
+.. raw:: html
+
+  <table class="colwidths-auto ansible-option-table docutils align-default" style="width: 100%">
+  <thead>
+  <tr class="row-odd">
+    <th class="head"><p>Parameter</p></th>
+    <th class="head"><p>Comments</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-api_url"></div>
+      <p class="ansible-option-title"><strong>api_url</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-api_url" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Address of the JBoss Network API.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-value literal notranslate ansible-option-default">&#34;https://jbossnetwork.api.redhat.com&#34;</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-client_id"></div>
+      <p class="ansible-option-title"><strong>client_id</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-client_id" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Client ID associated with to download a product from the JBoss Network API.</p>
+      <p>If value not set, will try environment variable <code class='docutils literal notranslate'>REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-client_secret"></div>
+      <p class="ansible-option-title"><strong>client_secret</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-client_secret" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Client Secret associated with to download a product from the JBoss Network API.</p>
+      <p>If value not set, will try environment variable <code class='docutils literal notranslate'>REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-product_category"></div>
+      <p class="ansible-option-title"><strong>product_category</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-product_category" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Type of the Product Category</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-product_id"></div>
+      <p class="ansible-option-title"><strong>product_id</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-product_id" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Product Id for the Redhat customer portal</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-product_type"></div>
+      <p class="ansible-option-title"><strong>product_type</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-product_type" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Type of the Product</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-product_version"></div>
+      <p class="ansible-option-title"><strong>product_version</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-product_version" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Product Version to be downloaded.</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-sso_url"></div>
+      <p class="ansible-option-title"><strong>sso_url</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-sso_url" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Address of the Red Hat SSO Server.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-value literal notranslate ansible-option-default">&#34;https://sso.redhat.com&#34;</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-validate_certs"></div>
+      <p class="ansible-option-title"><strong>validate_certs</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-validate_certs" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">boolean</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>If <code class='docutils literal notranslate'>false</code>, SSL certificates will not be validated.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+      <ul class="simple">
+        <li><p><code class="ansible-value literal notranslate ansible-option-choices-entry">false</code></p></li>
+        <li><p><code class="ansible-value literal notranslate ansible-option-default-bold"><strong>true</strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+      </ul>
+
+    </div></td>
+  </tr>
+  </tbody>
+  </table>
 
-.. list-table::
-  :width: 100%
-  :widths: auto
-  :header-rows: 1
-  :class: longtable ansible-option-table
-
-  * - Parameter
-    - Comments
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-api_url"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-api_url:
-
-      .. rst-class:: ansible-option-title
-
-      **api_url**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-api_url" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Address of the JBoss Network API.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-default-bold:`Default:` :ansible-option-default:`"https://jbossnetwork.api.redhat.com"`
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-client_id"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-client_id:
-
-      .. rst-class:: ansible-option-title
-
-      **client_id**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-client_id" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Client ID associated with to download a product from the JBoss Network API.
-
-      If value not set, will try environment variable \ :literal:`REDHAT\_PRODUCT\_DOWNLOAD\_CLIENT\_ID`\ 
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-client_secret"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-client_secret:
-
-      .. rst-class:: ansible-option-title
-
-      **client_secret**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-client_secret" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Client Secret associated with to download a product from the JBoss Network API.
-
-      If value not set, will try environment variable \ :literal:`REDHAT\_PRODUCT\_DOWNLOAD\_CLIENT\_SECRET`\ 
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-product_category"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-product_category:
-
-      .. rst-class:: ansible-option-title
-
-      **product_category**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-product_category" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Type of the Product Category
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-product_id"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-product_id:
-
-      .. rst-class:: ansible-option-title
-
-      **product_id**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-product_id" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Product Id for the Redhat customer portal
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-product_type"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-product_type:
-
-      .. rst-class:: ansible-option-title
-
-      **product_type**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-product_type" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Type of the Product
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-product_version"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-product_version:
-
-      .. rst-class:: ansible-option-title
-
-      **product_version**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-product_version" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Product Version to be downloaded.
-
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-sso_url"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-sso_url:
-
-      .. rst-class:: ansible-option-title
-
-      **sso_url**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-sso_url" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      Address of the Red Hat SSO Server.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-default-bold:`Default:` :ansible-option-default:`"https://sso.redhat.com"`
-
-      .. raw:: html
-
-        </div>
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="parameter-validate_certs"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__parameter-validate_certs:
-
-      .. rst-class:: ansible-option-title
-
-      **validate_certs**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#parameter-validate_certs" title="Permalink to this option"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`boolean`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      If \ :literal:`false`\ , SSL certificates will not be validated.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-choices:`Choices:`
-
-      - :ansible-option-choices-entry:`false`
-      - :ansible-option-choices-entry-default:`true` :ansible-option-choices-default-mark:`← (default)`
-
-
-      .. raw:: html
-
-        </div>
 
 
 .. Attributes
@@ -439,632 +243,201 @@ Return Values
 -------------
 Common return values are documented :ref:`here <common_return_values>`, the following are the fields unique to this module:
 
-.. tabularcolumns:: \X{1}{3}\X{2}{3}
-
-.. list-table::
-  :width: 100%
-  :widths: auto
-  :header-rows: 1
-  :class: longtable ansible-option-table
-
-  * - Key
-    - Description
-
-  * - .. raw:: html
-
-        <div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-results"></div>
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__return-results:
-
-      .. rst-class:: ansible-option-title
-
-      **results**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-results" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`complex`
-
-      .. raw:: html
-
-        </div>
-
-    - .. raw:: html
-
-        <div class="ansible-option-cell">
-
-      The objects returned from the API
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-
-      .. raw:: html
-
-        </div>
-
-    
-  * - .. raw:: html
-
-        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-results/category"></div>
-
-      .. raw:: latex
-
-        \hspace{0.02\textwidth}\begin{minipage}[t]{0.3\textwidth}
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/category:
-
-      .. rst-class:: ansible-option-title
-
-      **category**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-results/category" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-      .. raw:: latex
-
-        \end{minipage}
-
-    - .. raw:: html
-
-        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-
-      Product category.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-results/description"></div>
-
-      .. raw:: latex
-
-        \hspace{0.02\textwidth}\begin{minipage}[t]{0.3\textwidth}
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/description:
-
-      .. rst-class:: ansible-option-title
-
-      **description**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-results/description" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-      .. raw:: latex
-
-        \end{minipage}
-
-    - .. raw:: html
-
-        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-
-      Description of the product.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-results/distribution_status"></div>
-
-      .. raw:: latex
-
-        \hspace{0.02\textwidth}\begin{minipage}[t]{0.3\textwidth}
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/distribution_status:
-
-      .. rst-class:: ansible-option-title
-
-      **distribution_status**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-results/distribution_status" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-      .. raw:: latex
-
-        \end{minipage}
-
-    - .. raw:: html
-
-        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-
-      Distribution status of the product.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-results/download_path"></div>
-
-      .. raw:: latex
-
-        \hspace{0.02\textwidth}\begin{minipage}[t]{0.3\textwidth}
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/download_path:
-
-      .. rst-class:: ansible-option-title
-
-      **download_path**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-results/download_path" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-      .. raw:: latex
-
-        \end{minipage}
-
-    - .. raw:: html
-
-        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-
-      URL where the product can be downloaded.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-results/id"></div>
-
-      .. raw:: latex
-
-        \hspace{0.02\textwidth}\begin{minipage}[t]{0.3\textwidth}
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/id:
-
-      .. rst-class:: ansible-option-title
-
-      **id**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-results/id" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`integer`
-
-      .. raw:: html
-
-        </div>
-
-      .. raw:: latex
-
-        \end{minipage}
-
-    - .. raw:: html
-
-        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-
-      id of the product.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-results/md5"></div>
-
-      .. raw:: latex
-
-        \hspace{0.02\textwidth}\begin{minipage}[t]{0.3\textwidth}
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/md5:
-
-      .. rst-class:: ansible-option-title
-
-      **md5**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-results/md5" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-      .. raw:: latex
-
-        \end{minipage}
-
-    - .. raw:: html
-
-        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-
-      MD5 checksum of the product.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-results/name"></div>
-
-      .. raw:: latex
-
-        \hspace{0.02\textwidth}\begin{minipage}[t]{0.3\textwidth}
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/name:
-
-      .. rst-class:: ansible-option-title
-
-      **name**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-results/name" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-      .. raw:: latex
-
-        \end{minipage}
-
-    - .. raw:: html
-
-        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-
-      Name of the product.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-results/sha256"></div>
-
-      .. raw:: latex
-
-        \hspace{0.02\textwidth}\begin{minipage}[t]{0.3\textwidth}
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/sha256:
-
-      .. rst-class:: ansible-option-title
-
-      **sha256**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-results/sha256" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-      .. raw:: latex
-
-        \end{minipage}
-
-    - .. raw:: html
-
-        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-
-      MD5 checksum of the product.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-results/title"></div>
-
-      .. raw:: latex
-
-        \hspace{0.02\textwidth}\begin{minipage}[t]{0.3\textwidth}
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/title:
-
-      .. rst-class:: ansible-option-title
-
-      **title**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-results/title" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-      .. raw:: latex
-
-        \end{minipage}
-
-    - .. raw:: html
-
-        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-
-      Title of the product.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-results/type"></div>
-
-      .. raw:: latex
-
-        \hspace{0.02\textwidth}\begin{minipage}[t]{0.3\textwidth}
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/type:
-
-      .. rst-class:: ansible-option-title
-
-      **type**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-results/type" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-      .. raw:: latex
-
-        \end{minipage}
-
-    - .. raw:: html
-
-        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-
-      Type of product.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-results/version"></div>
-
-      .. raw:: latex
-
-        \hspace{0.02\textwidth}\begin{minipage}[t]{0.3\textwidth}
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/version:
-
-      .. rst-class:: ansible-option-title
-
-      **version**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-results/version" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-      .. raw:: latex
-
-        \end{minipage}
-
-    - .. raw:: html
-
-        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-
-      Product version.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-
-      .. raw:: html
-
-        </div>
-
-
-  * - .. raw:: html
-
-        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
-        <div class="ansibleOptionAnchor" id="return-results/visibility"></div>
-
-      .. raw:: latex
-
-        \hspace{0.02\textwidth}\begin{minipage}[t]{0.3\textwidth}
-
-      .. _ansible_collections.middleware_automation.common.product_search_module__return-results/visibility:
-
-      .. rst-class:: ansible-option-title
-
-      **visibility**
-
-      .. raw:: html
-
-        <a class="ansibleOptionLink" href="#return-results/visibility" title="Permalink to this return value"></a>
-
-      .. ansible-option-type-line::
-
-        :ansible-option-type:`string`
-
-      .. raw:: html
-
-        </div>
-
-      .. raw:: latex
-
-        \end{minipage}
-
-    - .. raw:: html
-
-        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-
-      Product visibility.
-
-
-      .. rst-class:: ansible-option-line
-
-      :ansible-option-returned-bold:`Returned:` success
-
-
-      .. raw:: html
-
-        </div>
-
+.. raw:: html
+
+  <table class="colwidths-auto ansible-option-table docutils align-default" style="width: 100%">
+  <thead>
+  <tr class="row-odd">
+    <th class="head"><p>Key</p></th>
+    <th class="head"><p>Description</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results"></div>
+      <p class="ansible-option-title"><strong>results</strong></p>
+      <a class="ansibleOptionLink" href="#return-results" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">complex</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>The objects returned from the API</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results/category"></div>
+      <p class="ansible-option-title"><strong>category</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/category" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+      <p>Product category.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results/description"></div>
+      <p class="ansible-option-title"><strong>description</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/description" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+      <p>Description of the product.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results/distribution_status"></div>
+      <p class="ansible-option-title"><strong>distribution_status</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/distribution_status" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+      <p>Distribution status of the product.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results/download_path"></div>
+      <p class="ansible-option-title"><strong>download_path</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/download_path" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+      <p>URL where the product can be downloaded.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results/id"></div>
+      <p class="ansible-option-title"><strong>id</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/id" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">integer</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+      <p>id of the product.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results/md5"></div>
+      <p class="ansible-option-title"><strong>md5</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/md5" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+      <p>MD5 checksum of the product.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results/name"></div>
+      <p class="ansible-option-title"><strong>name</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/name" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+      <p>Name of the product.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results/sha256"></div>
+      <p class="ansible-option-title"><strong>sha256</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/sha256" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+      <p>MD5 checksum of the product.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results/title"></div>
+      <p class="ansible-option-title"><strong>title</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/title" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+      <p>Title of the product.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results/type"></div>
+      <p class="ansible-option-title"><strong>type</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/type" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+      <p>Type of product.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results/version"></div>
+      <p class="ansible-option-title"><strong>version</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/version" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+      <p>Product version.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results/visibility"></div>
+      <p class="ansible-option-title"><strong>visibility</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/visibility" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+      <p>Product visibility.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+
+  </tbody>
+  </table>
 
 
 

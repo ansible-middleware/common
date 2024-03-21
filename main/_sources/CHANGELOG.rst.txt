@@ -12,6 +12,11 @@ Major Changes
 
 - Update minimum ansible version `#22 <https://github.com/ansible-middleware/common/pull/22>`_
 
+Minor Changes
+-------------
+
+- Add fedora.linux_system_roles dependency `#23 <https://github.com/ansible-middleware/common/pull/23>`_
+
 v1.1.4
 ======
 

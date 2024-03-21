@@ -1,6 +1,7 @@
 ---
 collections:
   - name: ansible.posix
+  - name: fedora.linux_system_roles
   - name: community.general
   - name: community.docker
     version: ">=1.9.1"

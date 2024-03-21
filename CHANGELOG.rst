@@ -1,9 +1,21 @@
-==========================================
-middleware_automation.common Release Notes
-==========================================
+===========================================
+middleware\_automation.common Release Notes
+===========================================
 
 .. contents:: Topics
 
+v1.2.0
+======
+
+Major Changes
+-------------
+
+- Update minimum ansible version `#22 <https://github.com/ansible-middleware/common/pull/22>`_
+
+Minor Changes
+-------------
+
+- Add fedora.linux_system_roles dependency `#23 <https://github.com/ansible-middleware/common/pull/23>`_
 
 v1.1.4
 ======
@@ -58,3 +70,4 @@ v1.0.0
 
 v0.0.1
 ======
+

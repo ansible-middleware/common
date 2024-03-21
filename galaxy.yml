@@ -1,7 +1,7 @@
 ---
 namespace: middleware_automation
 name: common
-version: "1.2.1"
+version: "1.2.0"
 readme: README.md
 authors:
   - Andrew Block <ablock@redhat.com>
@@ -18,7 +18,7 @@ tags:
   - middleware
   - a4mw
 dependencies:
-  "fedora.linux_system_roles": ">=1.75.3"
+  "fedora.linux_system_roles": "*"
   "ansible.posix": ">=1.4.0"
 repository: https://github.com/ansible-middleware/common
 documentation: https://ansible-middleware.github.io/common

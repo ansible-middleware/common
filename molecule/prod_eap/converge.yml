@@ -3,13 +3,6 @@
   hosts: localhost
   gather_facts: no
   tasks:
-    - name: "Ensures required secret are provided."
-      ansible.builtin.assert:
-        that:
-          - client_id is defined and client_id | length > 0
-          - client_secret is defined and client_secret | length > 0
-        fail_msg: "Missing required env vars PROD_JBOSSNETWORK_API_CLIENTID and/or PROD_JBOSSNETWORK_API_SECRET"
-
     - name: Search EAP Product
       middleware_automation.common.product_search:
         client_id: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_CLIENTID') }}"
@@ -26,8 +19,8 @@
 
     - name: Retrieve product download using JBossNetwork API
       middleware_automation.common.product_search:
-        client_id: "{{ client_id }}"
-        client_secret: "{{ client_secret }}"
+        client_id: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_CLIENTID') }}"
+        client_secret: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_SECRET') }}"
         product_type: BUGFIX
         product_version: '7.4'
         product_category: appplatform

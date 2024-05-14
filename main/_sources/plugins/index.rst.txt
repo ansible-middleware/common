@@ -11,6 +11,7 @@ Plugin Index
    :caption: modules plugins
    :maxdepth: 0
 
+   maven_artifact
    product_download
    product_search
    xml

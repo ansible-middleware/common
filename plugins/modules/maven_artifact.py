@@ -24,11 +24,6 @@ author:
     - Guido Grazioli (@ggraziol)
 requirements:
     - lxml
-attributes:
-    check_mode:
-        support: none
-    diff_mode:
-        support: none
 options:
     group_id:
         type: str

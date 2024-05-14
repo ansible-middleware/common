@@ -4,6 +4,14 @@ middleware\_automation.common Release Notes
 
 .. contents:: Topics
 
+v1.2.1-devel
+============
+
+Minor Changes
+-------------
+
+- Port ``maven_artifact`` module from community.general `#24 <https://github.com/ansible-middleware/common/pull/24>`_
+
 v1.2.0
 ======
 
@@ -16,7 +24,6 @@ Minor Changes
 -------------
 
 - Add fedora.linux_system_roles dependency `#23 <https://github.com/ansible-middleware/common/pull/23>`_
-- Port ``maven_artifact`` module from community.general `#24 <https://github.com/ansible-middleware/common/pull/24>`_
 
 v1.1.4
 ======

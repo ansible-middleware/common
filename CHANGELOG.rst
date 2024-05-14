@@ -4,6 +4,14 @@ middleware\_automation.common Release Notes
 
 .. contents:: Topics
 
+v1.2.1
+======
+
+Minor Changes
+-------------
+
+- Port ``maven_artifact`` module from community.general `#24 <https://github.com/ansible-middleware/common/pull/24>`_
+
 v1.2.0
 ======
 

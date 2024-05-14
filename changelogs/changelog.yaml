@@ -65,3 +65,12 @@ releases:
     - 22.yaml
     - 23.yaml
     release_date: '2024-03-21'
+  1.2.1:
+    changes:
+      minor_changes:
+      - 'Port ``maven_artifact`` module from community.general `#24 <https://github.com/ansible-middleware/common/pull/24>`_
+
+        '
+    fragments:
+    - 24.yaml
+    release_date: '2024-05-14'

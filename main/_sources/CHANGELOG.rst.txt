@@ -4,8 +4,16 @@ middleware\_automation.common Release Notes
 
 .. contents:: Topics
 
-v1.2.1-devel
+v1.2.2-devel
 ============
+
+Release Summary
+---------------
+
+Internal release, documentation or test changes only.
+
+v1.2.1
+======
 
 Minor Changes
 -------------

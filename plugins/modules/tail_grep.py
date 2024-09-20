@@ -5,8 +5,9 @@
 # Apache License, Version 2.0 (see LICENSE or https://www.apache.org/licenses/LICENSE-2.0)
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
-from __future__ import annotations
+from __future__ import absolute_import, division, print_function
 
+__metaclass__ = type
 
 DOCUMENTATION = r'''
 ---
@@ -105,10 +106,11 @@ def amq_argument_spec():
 
 
 # from https://stackoverflow.com/a/54263201/389099
-def follow(file, sleep_sec=0.1):
+def follow(file, sleep_sec=0.1, timeout_sec=60):
     """ Yield each line from a file as they are written.
     `sleep_sec` is the time to sleep after empty reads. """
     line = ''
+    ts = time.time()
     while True:
         tmp = file.readline()
         if tmp is not None and tmp != "":
@@ -118,22 +120,24 @@ def follow(file, sleep_sec=0.1):
                 line = ''
         elif sleep_sec:
             time.sleep(sleep_sec)
+            if (time.time() >= (ts + timeout_sec)):
+                raise Exception("timeout reached without finding search string in file")
 
 
 def main():
     module = AnsibleModule(argument_spec=amq_argument_spec(), supports_check_mode=False)
 
     source = module.params['path']
+    regex = module.params['regex']
+    timeout = module.params['timeout']
+    delay = module.params['delay']
 
     try:
         with open(source, 'r') as source_fh:
-            ts = time.time()
-            for line in follow(file, 0.25):
+            time.sleep(delay)
+            for line in follow(source_fh, 0.25, timeout):
                 if re.match(regex, line):
                     break
-                if (time.time() >= ts + timeout):
-                    msg = "timeout reached without finding search string in file"
-                    module.fail_json(msg)
     except (IOError, OSError) as e:
         if e.errno == errno.ENOENT:
             msg = "file not found: %s" % source
@@ -142,9 +146,12 @@ def main():
         elif e.errno == errno.EISDIR:
             msg = "source is a directory and must be a file: %s" % source
         else:
-            msg = "unable to slurp file: %s" % to_native(e, errors='surrogate_then_replace')
+            msg = "unable to read file: %s" % to_native(e, errors='surrogate_then_replace')
 
         module.fail_json(msg)
+
+    except (Exception) as e:
+        module.fail_json(e.args)
 
     module.exit_json(content=line, source=source)
 

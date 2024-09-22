@@ -1,4 +1,3 @@
-
 .. Document meta
 
 :orphan:
@@ -7,7 +6,7 @@
     :trim:
 
 .. meta::
-  :antsibull-docs: 2.11.0
+  :antsibull-docs: 2.14.0
 
 .. Anchors
 
@@ -458,10 +457,10 @@ Notes
 -----
 
 .. note::
-   - Use the \ :literal:`--check`\  and \ :literal:`--diff`\  options when testing your expressions.
+   - Use the :literal:`--check` and :literal:`--diff` options when testing your expressions.
    - The diff output is automatically pretty-printed, so may not reflect the actual file content, only the file structure.
    - This module does not handle complicated xpath expressions, so limit xpath selectors to simple expressions.
-   - Beware that in case your XML elements are namespaced, you need to use the \ :emphasis:`namespaces`\  parameter, see the examples.
+   - Beware that in case your XML elements are namespaced, you need to use the :emphasis:`namespaces` parameter, see the examples.
    - Namespaces prefix should be used for all children of an element where namespace is defined, unless another namespace is defined for them.
 
 .. Seealso
@@ -483,7 +482,6 @@ Examples
 
 .. code-block:: yaml+jinja
 
-    
     # Consider the following XML file:
     #
     # <business type="bar">
@@ -646,7 +644,6 @@ Examples
 
 
 
-
 .. Facts
 
 
@@ -778,4 +775,3 @@ Authors
 
 
 .. Parsing errors
-

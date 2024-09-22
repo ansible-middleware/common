@@ -1,4 +1,3 @@
-
 .. Document meta
 
 :orphan:
@@ -7,7 +6,7 @@
     :trim:
 
 .. meta::
-  :antsibull-docs: 2.11.0
+  :antsibull-docs: 2.14.0
 
 .. Anchors
 
@@ -223,14 +222,12 @@ Examples
 
 .. code-block:: yaml+jinja
 
-    
     - name: Search Red Hat Products
       middleware_automation.common.product_search:
         client_id: 123e4567-e89b-12d3-a456-426614174000
         client_secret: 0mpkY0i8IdIRWbk6rLXBlf5Jkqq8i4nW
         product_category: webserver
         product_version: 5.5
-
 
 
 
@@ -457,4 +454,3 @@ Authors
 
 
 .. Parsing errors
-

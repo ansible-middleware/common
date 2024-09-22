@@ -1,0 +1,386 @@
+.. Document meta
+
+:orphan:
+
+.. |antsibull-internal-nbsp| unicode:: 0xA0
+    :trim:
+
+.. meta::
+  :antsibull-docs: 2.14.0
+
+.. Anchors
+
+.. _ansible_collections.middleware_automation.common.tail_grep_module:
+
+.. Anchors: short name for ansible.builtin
+
+.. Title
+
+tail_grep -- Tail a logfile until a regex matcher is found or a timeout triggers
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. Collection note
+
+.. note::
+    This module is part of the `middleware_automation.common collection <https://galaxy.ansible.com/ui/repo/published/middleware_automation/common/>`_.
+
+    It is not included in ``ansible-core``.
+    To check whether it is installed, run :code:`ansible-galaxy collection list`.
+
+    To install it, use: :code:`ansible-galaxy collection install middleware\_automation.common`.
+
+    To use it in a playbook, specify: :code:`middleware_automation.common.tail_grep`.
+
+.. version_added
+
+
+.. contents::
+   :local:
+   :depth: 1
+
+.. Deprecated
+
+
+Synopsis
+--------
+
+.. Description
+
+- This module is used to follow some application logfile and return successfully when a search string or regex is found; otherwise fail after a timeout.
+
+
+.. Aliases
+
+
+.. Requirements
+
+
+
+
+
+
+.. Options
+
+Parameters
+----------
+
+.. raw:: html
+
+  <table class="colwidths-auto ansible-option-table docutils align-default" style="width: 100%">
+  <thead>
+  <tr class="row-odd">
+    <th class="head"><p>Parameter</p></th>
+    <th class="head"><p>Comments</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-delay"></div>
+      <p class="ansible-option-title"><strong>delay</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-delay" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">integer</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>How many seconds to wait after opening the file before starting to look for the regex.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-value literal notranslate ansible-option-default">0</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-from_regex"></div>
+      <p class="ansible-option-title"><strong>from_regex</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-from_regex" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Backwards from end of file, lines preceeding this string will not be considered for matching regex. By default, the whole file is read. If `$` is used, start from the first line written after the file is opened.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-value literal notranslate ansible-option-default">&#34;&#34;</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-path"></div>
+      <p class="ansible-option-title"><strong>path</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-path" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">path</span>
+        / <span class="ansible-option-required">required</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>The file on the remote system to tail.</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-regex"></div>
+      <p class="ansible-option-title"><strong>regex</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-regex" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+        / <span class="ansible-option-required">required</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>The string or regular expression to search in the file.</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="parameter-timeout"></div>
+      <p class="ansible-option-title"><strong>timeout</strong></p>
+      <a class="ansibleOptionLink" href="#parameter-timeout" title="Permalink to this option"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">integer</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>After how many seconds to exit unsuccessfully without having found the search regex.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-value literal notranslate ansible-option-default">60</code></p>
+    </div></td>
+  </tr>
+  </tbody>
+  </table>
+
+
+
+.. Attributes
+
+
+Attributes
+----------
+
+.. tabularcolumns:: \X{2}{10}\X{3}{10}\X{5}{10}
+
+.. list-table::
+  :width: 100%
+  :widths: auto
+  :header-rows: 1
+  :class: longtable ansible-option-table
+
+  * - Attribute
+    - Support
+    - Description
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="attribute-check_mode"></div>
+
+      .. _ansible_collections.middleware_automation.common.tail_grep_module__attribute-check_mode:
+
+      .. rst-class:: ansible-option-title
+
+      **check_mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#attribute-check_mode" title="Permalink to this attribute"></a>
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      :ansible-attribute-support-label:`Support: \ `\ :ansible-attribute-support-none:`none`
+
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Can run in check\_mode and return changed status prediction without modifying target, if not supported the action will be skipped.
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="attribute-diff_mode"></div>
+
+      .. _ansible_collections.middleware_automation.common.tail_grep_module__attribute-diff_mode:
+
+      .. rst-class:: ansible-option-title
+
+      **diff_mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#attribute-diff_mode" title="Permalink to this attribute"></a>
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      :ansible-attribute-support-label:`Support: \ `\ :ansible-attribute-support-none:`none`
+
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Will return details on what has changed (or possibly needs changing in check\_mode), when in diff mode
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="attribute-platform"></div>
+
+      .. _ansible_collections.middleware_automation.common.tail_grep_module__attribute-platform:
+
+      .. rst-class:: ansible-option-title
+
+      **platform**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#attribute-platform" title="Permalink to this attribute"></a>
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      :ansible-attribute-support-property:`Platform:` |antsibull-internal-nbsp|:ansible-attribute-support-full:`posix`
+
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Target OS/families that can be operated against
+
+
+      .. raw:: html
+
+        </div>
+
+
+
+.. Notes
+
+
+.. Seealso
+
+
+.. Examples
+
+Examples
+--------
+
+.. code-block:: yaml+jinja
+
+    - name: Tail activemq log until the successful start status code is found
+      ansible.builtin.tail_grep:
+        path: /var/log/activemq/artemis.log
+        regex: AMQ220010
+
+
+
+.. Facts
+
+
+.. Return values
+
+Return Values
+-------------
+Common return values are documented :ref:`here <common_return_values>`, the following are the fields unique to this module:
+
+.. raw:: html
+
+  <table class="colwidths-auto ansible-option-table docutils align-default" style="width: 100%">
+  <thead>
+  <tr class="row-odd">
+    <th class="head"><p>Key</p></th>
+    <th class="head"><p>Description</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="row-even">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-content"></div>
+      <p class="ansible-option-title"><strong>content</strong></p>
+      <a class="ansibleOptionLink" href="#return-content" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>The full string that was matched by the search regex</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+      <p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-value literal notranslate ansible-option-sample">&#34;Application has been started successfully.&#34;</code></p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-source"></div>
+      <p class="ansible-option-title"><strong>source</strong></p>
+      <a class="ansibleOptionLink" href="#return-source" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-cell">
+      <p>Actual path of file opened</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+      <p class="ansible-option-line ansible-option-sample"><strong class="ansible-option-sample-bold">Sample:</strong> <code class="ansible-value literal notranslate ansible-option-sample">&#34;/var/log/messages&#34;</code></p>
+    </div></td>
+  </tr>
+  </tbody>
+  </table>
+
+
+
+..  Status (Presently only deprecated)
+
+
+.. Authors
+
+Authors
+~~~~~~~
+
+- Guido Grazioli (@guidograzioli)
+
+
+
+.. Extra links
+
+
+.. Parsing errors

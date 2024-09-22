@@ -1,4 +1,3 @@
-
 .. Document meta
 
 :orphan:
@@ -7,7 +6,7 @@
     :trim:
 
 .. meta::
-  :antsibull-docs: 2.11.0
+  :antsibull-docs: 2.14.0
 
 .. Anchors
 
@@ -121,12 +120,10 @@ Examples
 
 .. code-block:: yaml+jinja
 
-    
     - name: Convert list of tuples into dictionary
       ansible.builtin.set_fact:
         dictionary: "{{ ['2.1', '2.10', '2.9'] | middleware_automation.common.version_sort }}"
         # Result is ['2.1', '2.9', '2.10']
-
 
 
 
@@ -186,4 +183,3 @@ Authors
 
 
 .. Parsing errors
-

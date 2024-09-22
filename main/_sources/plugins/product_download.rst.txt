@@ -1,4 +1,3 @@
-
 .. Document meta
 
 :orphan:
@@ -7,7 +6,7 @@
     :trim:
 
 .. meta::
-  :antsibull-docs: 2.11.0
+  :antsibull-docs: 2.14.0
 
 .. Anchors
 
@@ -146,7 +145,7 @@ Parameters
       </p>
     </div></td>
     <td><div class="ansible-option-cell">
-      <p>Absolute  .</p>
+      <p>Absolute .</p>
     </div></td>
   </tr>
   <tr class="row-odd">
@@ -402,14 +401,12 @@ Examples
 
 .. code-block:: yaml+jinja
 
-    
     - name: Download Red Hat Product
       middleware_automation.common.product_download:
         client_id: 123e4567-e89b-12d3-a456-426614174000
         client_secret: 0mpkY0i8IdIRWbk6rLXBlf5Jkqq8i4nW
         dest: /tmp/eap-connectors.zip
         product_id: 12345
-
 
 
 
@@ -618,4 +615,3 @@ Authors
 
 
 .. Parsing errors
-

@@ -14,5 +14,6 @@ Plugin Index
    maven_artifact
    product_download
    product_search
+   tail_grep
    xml
 

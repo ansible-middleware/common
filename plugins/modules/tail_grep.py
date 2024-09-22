@@ -12,7 +12,7 @@ __metaclass__ = type
 DOCUMENTATION = r'''
 ---
 module: tail_grep
-version_added: 1.2.2
+version_added: 1.2
 short_description: Tail a logfile until a regex matcher is found or a timeout triggers
 description:
      - This module is used to follow some application logfile and return successfully when

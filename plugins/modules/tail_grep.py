@@ -12,7 +12,6 @@ __metaclass__ = type
 DOCUMENTATION = r'''
 ---
 module: tail_grep
-version_added: 1.2
 short_description: Tail a logfile until a regex matcher is found or a timeout triggers
 description:
      - This module is used to follow some application logfile and return successfully when
@@ -85,7 +84,6 @@ import errno
 import re
 import time
 
-from typing import Iterator
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.common.text.converters import to_native
 

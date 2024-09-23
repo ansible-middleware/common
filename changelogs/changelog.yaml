@@ -71,3 +71,12 @@ releases:
     fragments:
     - 24.yaml
     release_date: '2024-05-14'
+  1.2.2:
+    changes:
+      minor_changes:
+      - 'New module ``tail_grep``: string matching in logfiles `#25 <https://github.com/ansible-middleware/common/pull/25>`_
+
+        '
+    fragments:
+    - 25.yaml
+    release_date: '2024-09-23'

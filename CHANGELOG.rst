@@ -4,6 +4,14 @@ middleware\_automation.common Release Notes
 
 .. contents:: Topics
 
+v1.2.2
+======
+
+Minor Changes
+-------------
+
+- New module ``tail_grep``: string matching in logfiles `#25 <https://github.com/ansible-middleware/common/pull/25>`_
+
 v1.2.1
 ======
 
@@ -77,3 +85,4 @@ v1.0.0
 
 v0.0.1
 ======
+

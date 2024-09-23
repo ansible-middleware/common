@@ -32,7 +32,6 @@ Bugfixes
 --------
 
 - Ensure compatibility with python 2.7 / ansible 2.9 `#19 <https://github.com/ansible-middleware/common/pull/19>`_
-- Ensure compatibility with python 2.7 / ansible 2.9 `#19 <https://github.com/ansible-middleware/common/pull/19>`_
 
 v1.1.3
 ======
@@ -78,4 +77,3 @@ v1.0.0
 
 v0.0.1
 ======
-

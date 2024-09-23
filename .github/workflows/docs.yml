@@ -8,11 +8,6 @@ on:
       - "[0-9]+.[0-9]+.[0-9]+"
   workflow_dispatch:
 
-env:
-  COLORTERM: 'yes'
-  TERM: 'xterm-256color'
-  PYTEST_ADDOPTS: '--color=yes'
-
 jobs:
   docs:
     uses: ansible-middleware/github-actions/.github/workflows/docs.yml@main
@@ -20,3 +15,4 @@ jobs:
     with:
       fqcn: 'middleware_automation/common'
       collection_fqcn: 'middleware_automation.common'
+      historical_docs: 'false'

@@ -8,10 +8,13 @@
         client_id: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_CLIENTID') }}"
         client_secret: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_SECRET') }}"
         product_type: DISTRIBUTION
-        product_version: '7.4'
         product_category: appplatform
       register: rhn_products
       no_log: false
+
+    - name: Debug API JSON result
+      ansible.builtin.debug:
+        msg: "{{ rhn_products.json | to_nice_json }}"
 
     - name: Search install zipfile
       ansible.builtin.set_fact:

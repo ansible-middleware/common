@@ -6,7 +6,7 @@
     :trim:
 
 .. meta::
-  :antsibull-docs: 2.14.0
+  :antsibull-docs: 2.21.0
 
 .. Anchors
 
@@ -27,7 +27,7 @@ maven_artifact -- Downloads an Artifact from a Maven Repository
     It is not included in ``ansible-core``.
     To check whether it is installed, run :code:`ansible-galaxy collection list`.
 
-    To install it, use: :code:`ansible-galaxy collection install middleware\_automation.common`.
+    To install it, use: :code:`ansible\-galaxy collection install middleware\_automation.common`.
     You need further requirements to be able to use this module,
     see :ref:`Requirements <ansible_collections.middleware_automation.common.maven_artifact_module_requirements>` for details.
 
@@ -112,8 +112,8 @@ Parameters
     </div></td>
     <td><div class="ansible-option-cell">
       <p>The attributes the resulting filesystem object should have.</p>
-      <p>To get supported flags look at the man page for <em>chattr</em> on the target system.</p>
-      <p>This string should contain the attributes in the same order as the one displayed by <em>lsattr</em>.</p>
+      <p>To get supported flags look at the man page for <code class='docutils literal notranslate'>chattr</code> on the target system.</p>
+      <p>This string should contain the attributes in the same order as the one displayed by <code class='docutils literal notranslate'>lsattr</code>.</p>
       <p>The <code class='docutils literal notranslate'>=</code> operator is assumed as default, otherwise <code class='docutils literal notranslate'>+</code> or <code class='docutils literal notranslate'>-</code> operators need to be included in the string.</p>
     </div></td>
   </tr>
@@ -254,7 +254,7 @@ Parameters
       </p>
     </div></td>
     <td><div class="ansible-option-cell">
-      <p>Name of the group that should own the filesystem object, as would be fed to <em>chown</em>.</p>
+      <p>Name of the group that should own the filesystem object, as would be fed to <code class='docutils literal notranslate'>chown</code>.</p>
       <p>When left unspecified, it uses the current group of the current user unless you are root, in which case it can preserve the previous ownership.</p>
     </div></td>
   </tr>
@@ -316,7 +316,7 @@ Parameters
     </div></td>
     <td><div class="ansible-option-cell">
       <p>The permissions the resulting filesystem object should have.</p>
-      <p>For those used to <em>/usr/bin/chmod</em> remember that modes are actually octal numbers. You must give Ansible enough information to parse them correctly. For consistent results, quote octal numbers (for example, <code class="ansible-value literal notranslate">&#x27;644&#x27;</code> or <code class="ansible-value literal notranslate">&#x27;1777&#x27;</code>) so Ansible receives a string and can do its own conversion from string into number. Adding a leading zero (for example, <code class="ansible-value literal notranslate">0755</code>) works sometimes, but can fail in loops and some other circumstances.</p>
+      <p>For those used to <code class='docutils literal notranslate'>/usr/bin/chmod</code> remember that modes are actually octal numbers. You must give Ansible enough information to parse them correctly. For consistent results, quote octal numbers (for example, <code class="ansible-value literal notranslate">&#x27;644&#x27;</code> or <code class="ansible-value literal notranslate">&#x27;1777&#x27;</code>) so Ansible receives a string and can do its own conversion from string into number. Adding a leading zero (for example, <code class="ansible-value literal notranslate">0755</code>) works sometimes, but can fail in loops and some other circumstances.</p>
       <p>Giving Ansible a number without following either of these rules will end up with a decimal number which will have unexpected results.</p>
       <p>As of Ansible 1.8, the mode may be specified as a symbolic mode (for example, <code class="ansible-value literal notranslate">u+rwx</code> or <code class="ansible-value literal notranslate">u=rw,g=r,o=r</code>).</p>
       <p>If <code class="ansible-option literal notranslate"><strong><a class="reference internal" href="#parameter-mode"><span class="std std-ref"><span class="pre">mode</span></span></a></strong></code> is not specified and the destination filesystem object <b>does not</b> exist, the default <code class='docutils literal notranslate'>umask</code> on the system will be used when setting the mode for the newly created filesystem object.</p>
@@ -334,7 +334,7 @@ Parameters
       </p>
     </div></td>
     <td><div class="ansible-option-cell">
-      <p>Name of the user that should own the filesystem object, as would be fed to <em>chown</em>.</p>
+      <p>Name of the user that should own the filesystem object, as would be fed to <code class='docutils literal notranslate'>chown</code>.</p>
       <p>When left unspecified, it uses the current user unless you are root, in which case it can preserve the previous ownership.</p>
       <p>Specifying a numeric username will be assumed to be a user ID and not a username. Avoid numeric usernames to avoid this confusion.</p>
     </div></td>
@@ -685,7 +685,6 @@ Authors
 
 - Chris Schmidt (@chrisisbeef)
 - Guido Grazioli (@ggraziol)
-
 
 
 .. Extra links

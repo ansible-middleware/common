@@ -6,7 +6,7 @@
     :trim:
 
 .. meta::
-  :antsibull-docs: 2.14.0
+  :antsibull-docs: 2.21.0
 
 .. Anchors
 
@@ -27,7 +27,7 @@ tail_grep -- Tail a logfile until a regex matcher is found or a timeout triggers
     It is not included in ``ansible-core``.
     To check whether it is installed, run :code:`ansible-galaxy collection list`.
 
-    To install it, use: :code:`ansible-galaxy collection install middleware\_automation.common`.
+    To install it, use: :code:`ansible\-galaxy collection install middleware\_automation.common`.
 
     To use it in a playbook, specify: :code:`middleware_automation.common.tail_grep`.
 
@@ -377,7 +377,6 @@ Authors
 ~~~~~~~
 
 - Guido Grazioli (@guidograzioli)
-
 
 
 .. Extra links

@@ -6,7 +6,7 @@
     :trim:
 
 .. meta::
-  :antsibull-docs: 2.14.0
+  :antsibull-docs: 2.21.0
 
 .. Anchors
 
@@ -27,7 +27,7 @@ version_sort -- Sort a list according to version order instead of pure alphabeti
     It is not included in ``ansible-core``.
     To check whether it is installed, run :code:`ansible-galaxy collection list`.
 
-    To install it, use: :code:`ansible-galaxy collection install middleware\_automation.common`.
+    To install it, use: :code:`ansible\-galaxy collection install middleware\_automation.common`.
 
     To use it in a playbook, specify: :code:`middleware_automation.common.version_sort`.
 
@@ -175,9 +175,6 @@ Authors
 
 - Eric L. (@ericzolf)
 
-
-.. hint::
-    Configuration entries for each entry type have a low to high priority order. For example, a variable that is lower in the list will override a variable that is higher up.
 
 .. Extra links
 

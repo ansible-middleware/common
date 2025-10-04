@@ -1,6 +1,6 @@
 # Ansible Collection - Common
 <!--start build_status -->
-[![Build Status](https://github.com/ansible-middleware/common/workflows/CI/badge.svg?branch=main)](https://github.com/ansible-middleware/common/actions/workflows/ci.yml)
+[![Build Status](https://github.com/ansible-middleware/common/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ansible-middleware/common/actions/workflows/ci.yml)
 <!--end build_status -->
 ## About
 

@@ -6,7 +6,7 @@
     :trim:
 
 .. meta::
-  :antsibull-docs: 2.14.0
+  :antsibull-docs: 2.21.0
 
 .. Anchors
 
@@ -27,7 +27,7 @@ xml -- Manage bits and pieces of XML files or strings
     It is not included in ``ansible-core``.
     To check whether it is installed, run :code:`ansible-galaxy collection list`.
 
-    To install it, use: :code:`ansible-galaxy collection install middleware\_automation.common`.
+    To install it, use: :code:`ansible\-galaxy collection install middleware\_automation.common`.
     You need further requirements to be able to use this module,
     see :ref:`Requirements <ansible_collections.middleware_automation.common.xml_module_requirements>` for details.
 
@@ -457,8 +457,8 @@ Notes
 -----
 
 .. note::
-   - Use the :literal:`--check` and :literal:`--diff` options when testing your expressions.
-   - The diff output is automatically pretty-printed, so may not reflect the actual file content, only the file structure.
+   - Use the :literal:`\-\-check` and :literal:`\-\-diff` options when testing your expressions.
+   - The diff output is automatically pretty\-printed, so may not reflect the actual file content, only the file structure.
    - This module does not handle complicated xpath expressions, so limit xpath selectors to simple expressions.
    - Beware that in case your XML elements are namespaced, you need to use the :emphasis:`namespaces` parameter, see the examples.
    - Namespaces prefix should be used for all children of an element where namespace is defined, unless another namespace is defined for them.
@@ -768,7 +768,6 @@ Authors
 - Magnus Hedemark (@magnus919)
 - Dag Wieers (@dagwieers)
 - Guido Grazioli (@ggraziol)
-
 
 
 .. Extra links

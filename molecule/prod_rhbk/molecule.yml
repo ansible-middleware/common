@@ -1,0 +1,46 @@
+---
+driver:
+  name: docker
+platforms:
+  - name: instance
+    image: registry.access.redhat.com/ubi8/ubi-init:latest
+    pre_build_image: true
+    privileged: true
+    command: "/usr/sbin/init"
+    tmpfs:
+      - /run
+      - /tmp
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      interpreter_python: auto_silent
+    ssh_connection:
+      pipelining: false
+  env:
+    REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID: "${PROD_JBOSSNETWORK_API_CLIENTID}"
+    REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET: "${PROD_JBOSSNETWORK_API_SECRET}"
+    PROD_JBOSSNETWORK_API_CLIENTID: "${PROD_JBOSSNETWORK_API_CLIENTID}"
+    PROD_JBOSSNETWORK_API_SECRET: "${PROD_JBOSSNETWORK_API_SECRET}"
+  playbooks:
+    converge: converge.yml
+  inventory:
+    host_vars:
+      localhost:
+        ansible_python_interpreter: "{{ ansible_playbook_python }}"
+verifier:
+  name: ansible
+scenario:
+  test_sequence:
+    - cleanup
+    - destroy
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - side_effect
+    - verify
+    - cleanup
+    - destroy
+
+# Made with Bob

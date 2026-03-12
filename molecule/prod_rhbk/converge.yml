@@ -1,0 +1,122 @@
+---
+- name: Converge
+  hosts: localhost
+  gather_facts: yes
+  vars:
+    client_id: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_CLIENTID') }}"
+    client_secret: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_SECRET') }}"
+    rhbk_download_dir: "/tmp"
+    rhbk_major_version: "26"
+  tasks:
+    - name: Execute scenario when production credentials are provided
+      when:
+        - client_id is defined and client_id | length > 0
+        - client_secret is defined and client_secret | length > 0
+      block:
+        - name: Search RHBK Product
+          middleware_automation.common.product_search:
+            client_id: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_CLIENTID') }}"
+            client_secret: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_SECRET') }}"
+            product_type: DISTRIBUTION
+            product_version: "{{ rhbk_major_version }}"
+            product_category: core
+          register: rhn_products
+          no_log: false
+
+        - name: Search install zipfile
+          ansible.builtin.set_fact:
+            rhn_filtered_products: "{{ rhn_products.results | selectattr('file_path', 'match', '[^/]*/rhbk-[0-9]+\\.[0-9]+.*\\.zip$') }}"
+
+        - name: Display found RHBK distributions
+          ansible.builtin.debug:
+            msg: "Found RHBK distributions: {{ rhn_filtered_products | map(attribute='file_path') | list }}"
+
+        - name: Ensure at least one RHBK distribution was found
+          ansible.builtin.assert:
+            that: rhn_filtered_products | length > 0
+            fail_msg: "No RHBK distributions found in search results"
+
+        - name: Set latest RHBK version and product from search results
+          ansible.builtin.set_fact:
+            rhbk_versions: "{{ rhn_filtered_products | map(attribute='version') | list | unique }}"
+          when: rhn_filtered_products | length > 0
+
+        - name: Determine latest available RHBK version
+          ansible.builtin.set_fact:
+            latest_rhbk_version: "{{ rhbk_versions | middleware_automation.common.version_sort | last }}"
+          when: rhbk_versions is defined and rhbk_versions | length > 0
+
+        - name: Get latest RHBK product for download
+          ansible.builtin.set_fact:
+            latest_rhbk_product: "{{ (rhn_filtered_products | selectattr('version', 'eq', latest_rhbk_version) | list) | first }}"
+          when: latest_rhbk_version is defined
+
+        - name: Display latest RHBK version to download
+          ansible.builtin.debug:
+            msg: "Downloading latest RHBK version {{ latest_rhbk_version }} (product id {{ latest_rhbk_product.id }})"
+
+        - name: Download latest RHBK distribution from JBoss Network API
+          middleware_automation.common.product_download:
+            client_id: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_CLIENTID') }}"
+            client_secret: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_SECRET') }}"
+            product_id: "{{ latest_rhbk_product.id }}"
+            product_category: core
+            product_type: DISTRIBUTION
+            dest: "{{ rhbk_download_dir }}/rhbk-{{ latest_rhbk_version }}-distribution.zip"
+          register: rhbk_download
+          no_log: true
+          when: latest_rhbk_product is defined
+
+        - name: Verify RHBK distribution was downloaded
+          ansible.builtin.assert:
+            that:
+              - rhbk_download.dest is defined
+              - rhbk_download.failed | default(false) == false
+            fail_msg: "RHBK distribution download failed or dest not set"
+          when: latest_rhbk_product is defined
+
+        - name: Check downloaded file exists and has content
+          ansible.builtin.stat:
+            path: "{{ rhbk_download.dest }}"
+          register: rhbk_downloaded_file
+          when: latest_rhbk_product is defined
+
+        - name: Assert downloaded file exists and is not empty
+          ansible.builtin.assert:
+            that:
+              - rhbk_downloaded_file.stat.exists
+              - rhbk_downloaded_file.stat.size > 0
+            fail_msg: "Downloaded RHBK file missing or empty at {{ rhbk_download.dest }}"
+          when: latest_rhbk_product is defined
+
+        - name: Retrieve product download using JBossNetwork API
+          middleware_automation.common.product_search:
+            client_id: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_CLIENTID') }}"
+            client_secret: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_SECRET') }}"
+            product_type: BUGFIX
+            product_version: "{{ rhbk_major_version }}"
+            product_category: core
+          register: rhn_products
+          no_log: true
+
+        - name: Determine patch versions list
+          ansible.builtin.set_fact:
+            filtered_versions: "{{ rhn_products.results | map(attribute='file_path') | select('match', '^[^/]*/rhbk-.*[0-9]*[.][0-9]*.*$') | map('regex_replace','[^/]*/rhbk-([0-9]*[.][0-9]*)-.*','\\1' ) | list | unique }}"
+
+        - name: Determine latest version
+          ansible.builtin.debug:
+            msg: "RHBK {{ rhbk_major_version }} most recent patch is version {{ filtered_versions | middleware_automation.common.version_sort | last }}"
+          when: filtered_versions | length > 0
+
+        - name: No patches available
+          ansible.builtin.debug:
+            msg: "RHBK {{ rhbk_major_version }} has no patches available"
+          when: filtered_versions | length == 0
+
+    - name: Skip message when credentials not provided
+      ansible.builtin.debug:
+        msg: "Skipping RHBK prod scenario - set PROD_JBOSSNETWORK_API_CLIENTID and PROD_JBOSSNETWORK_API_SECRET to test download"
+      when:
+        - client_id is not defined or client_id | length == 0 or client_secret is not defined or client_secret | length == 0
+
+# Made with Bob

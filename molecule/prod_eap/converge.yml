@@ -2,35 +2,49 @@
 - name: Converge
   hosts: localhost
   gather_facts: no
+  vars:
+    client_id: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_CLIENTID') }}"
+    client_secret: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_SECRET') }}"
   tasks:
-    - name: Search EAP Product
-      middleware_automation.common.product_search:
-        client_id: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_CLIENTID') }}"
-        client_secret: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_SECRET') }}"
-        product_type: DISTRIBUTION
-        product_version: '7.4'
-        product_category: appplatform
-      register: rhn_products
-      no_log: false
+    - name: Execute scenario when production credentials are provided
+      when:
+        - client_id is defined and client_id | length > 0
+        - client_secret is defined and client_secret | length > 0
+      block:
+        - name: Search EAP Product
+          middleware_automation.common.product_search:
+            client_id: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_CLIENTID') }}"
+            client_secret: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_SECRET') }}"
+            product_type: DISTRIBUTION
+            product_version: '7.4'
+            product_category: appplatform
+          register: rhn_products
+          no_log: false
+        
+        - name: Search install zipfile
+          ansible.builtin.set_fact:
+            rhn_filtered_products: "{{ rhn_products.results | selectattr('file_path', 'match', '[^/]*/jboss-eap-7.4.0.zip$') }}"
+        
+        - name: Retrieve product download using JBossNetwork API
+          middleware_automation.common.product_search:
+            client_id: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_CLIENTID') }}"
+            client_secret: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_SECRET') }}"
+            product_type: BUGFIX
+            product_version: '7.4'
+            product_category: appplatform
+          register: rhn_products
+          no_log: true
+        
+        - name: Determine patch versions list
+          ansible.builtin.set_fact:
+            filtered_versions: "{{ rhn_products.results | map(attribute='file_path') | select('match', '^[^/]*/jboss-eap-.*[0-9]*[.][0-9]*[.][0-9]*.*$') | map('regex_replace','[^/]*/jboss-eap-([0-9]*[.][0-9]*[.][0-9]*)-.*','\\1' ) | list | unique }}"
+        
+        - name: Determine latest version
+          ansible.builtin.debug:
+            msg: "JBoss EAP 7.4 most recent CP is version {{ filtered_versions | middleware_automation.common.version_sort | last }}"
 
-    - name: Search install zipfile
-      ansible.builtin.set_fact:
-        rhn_filtered_products: "{{ rhn_products.results | selectattr('file_path', 'match', '[^/]*/jboss-eap-7.4.0.zip$') }}"
-
-    - name: Retrieve product download using JBossNetwork API
-      middleware_automation.common.product_search:
-        client_id: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_CLIENTID') }}"
-        client_secret: "{{ lookup('env', 'PROD_JBOSSNETWORK_API_SECRET') }}"
-        product_type: BUGFIX
-        product_version: '7.4'
-        product_category: appplatform
-      register: rhn_products
-      no_log: true
-
-    - name: Determine patch versions list
-      ansible.builtin.set_fact:
-        filtered_versions: "{{ rhn_products.results | map(attribute='file_path') | select('match', '^[^/]*/jboss-eap-.*[0-9]*[.][0-9]*[.][0-9]*.*$') | map('regex_replace','[^/]*/jboss-eap-([0-9]*[.][0-9]*[.][0-9]*)-.*','\\1' ) | list | unique }}"
-
-    - name: Determine latest version
+    - name: Skip message when credentials not provided
       ansible.builtin.debug:
-        msg: "JBoss EAP 7.4 most recent CP is version {{ filtered_versions | middleware_automation.common.version_sort | last }}"
+        msg: "Skipping EAP prod scenario - set PROD_JBOSSNETWORK_API_CLIENTID and PROD_JBOSSNETWORK_API_SECRET to exercise JBoss Network API tests"
+      when:
+        - client_id is not defined or client_id | length == 0 or client_secret is not defined or client_secret | length == 0

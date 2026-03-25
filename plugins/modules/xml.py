@@ -222,9 +222,9 @@ EXAMPLES = r'''
     path: /foo/bar.xml
     xpath: /business/beers
     add_children:
-    - beer: Old Rasputin
-    - beer: Old Motor Oil
-    - beer: Old Curmudgeon
+      - beer: Old Rasputin
+      - beer: Old Motor Oil
+      - beer: Old Curmudgeon
 
 - name: Add several more beers to the 'beers' element and add them before the 'Rochefort 10' element
   middleware_automation.common.xml:
@@ -232,9 +232,9 @@ EXAMPLES = r'''
     xpath: '/business/beers/beer[text()="Rochefort 10"]'
     insertbefore: true
     add_children:
-    - beer: Old Rasputin
-    - beer: Old Motor Oil
-    - beer: Old Curmudgeon
+      - beer: Old Rasputin
+      - beer: Old Motor Oil
+      - beer: Old Curmudgeon
 
 # NOTE: The 'state' defaults to 'present' and 'value' defaults to 'null' for elements
 - name: Add a 'validxhtml' element to the 'website' element

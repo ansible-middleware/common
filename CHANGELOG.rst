@@ -4,6 +4,15 @@ middleware\_automation.common Release Notes
 
 .. contents:: Topics
 
+v1.2.3
+======
+
+Bugfixes
+--------
+
+- AMW-441 common collection CI jobs are failing due to some python module `#33 <https://github.com/ansible-middleware/common/pull/33>`_
+- common collection CI label is showing no status `#30 <https://github.com/ansible-middleware/common/pull/30>`_
+
 v1.2.2
 ======
 

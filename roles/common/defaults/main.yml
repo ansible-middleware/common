@@ -1,0 +1,3 @@
+---
+common_systemd_home: '/usr/lib/systemd/system'
+common_systemd_default_unit_template: 'templates/service_systemd.j2'

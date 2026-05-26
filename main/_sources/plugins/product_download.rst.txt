@@ -16,8 +16,8 @@
 
 .. Title
 
-product_download -- Downloads products from the JBoss Network API.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+product_download -- Downloads products from the Red Hat Unified Downloads API.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. Collection note
 
@@ -46,7 +46,7 @@ Synopsis
 
 .. Description
 
-- Downloads products from the JBoss Network API.
+- Downloads products from the Red Hat Unified Downloads API.
 
 
 .. Aliases
@@ -84,8 +84,8 @@ Parameters
       </p>
     </div></td>
     <td><div class="ansible-option-cell">
-      <p>Address of the JBoss Network API.</p>
-      <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-value literal notranslate ansible-option-default">&#34;https://jbossnetwork.api.redhat.com&#34;</code></p>
+      <p>Address of the Red Hat Unified Downloads API.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-value literal notranslate ansible-option-default">&#34;https://api.access.redhat.com/downloads&#34;</code></p>
     </div></td>
   </tr>
   <tr class="row-odd">
@@ -116,7 +116,7 @@ Parameters
       </p>
     </div></td>
     <td><div class="ansible-option-cell">
-      <p>Client ID associated with to download a product from the JBoss Network API.</p>
+      <p>Client ID associated with to download a product from the Red Hat Unified Downloads API.</p>
       <p>If value not set, will try environment variable <code class='docutils literal notranslate'>REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID</code></p>
     </div></td>
   </tr>
@@ -130,7 +130,7 @@ Parameters
       </p>
     </div></td>
     <td><div class="ansible-option-cell">
-      <p>Client Secret associated with to download a product from the JBoss Network API.</p>
+      <p>Client Secret associated with to download a product from the Red Hat Unified Downloads API.</p>
       <p>If value not set, will try environment variable <code class='docutils literal notranslate'>REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET</code></p>
     </div></td>
   </tr>
@@ -179,6 +179,7 @@ Parameters
     <td><div class="ansible-option-cell">
       <p>Name of the group that should own the filesystem object, as would be fed to <code class='docutils literal notranslate'>chown</code>.</p>
       <p>When left unspecified, it uses the current group of the current user unless you are root, in which case it can preserve the previous ownership.</p>
+      <p>Specifying a numeric group name (for example, "1000") will be assumed to be a group ID (GID) and not a group name. To prevent confusion, avoid using purely numeric group names.</p>
     </div></td>
   </tr>
   <tr class="row-odd">
@@ -212,7 +213,7 @@ Parameters
     <td><div class="ansible-option-cell">
       <p>Name of the user that should own the filesystem object, as would be fed to <code class='docutils literal notranslate'>chown</code>.</p>
       <p>When left unspecified, it uses the current user unless you are root, in which case it can preserve the previous ownership.</p>
-      <p>Specifying a numeric username will be assumed to be a user ID and not a username. Avoid numeric usernames to avoid this confusion.</p>
+      <p>Specifying a numeric username (for example, "1000") will be assumed to be a user ID (UID) and not a username. To prevent confusion, avoid using purely numeric usernames.</p>
     </div></td>
   </tr>
   <tr class="row-odd">
@@ -607,7 +608,7 @@ Common return values are documented :ref:`here <common_return_values>`, the foll
 Authors
 ~~~~~~~
 
-- Andrew Block (@sabre1041)
+- Andrew Block (@sabre1041), Ranabir Chakraborty
 
 
 .. Extra links

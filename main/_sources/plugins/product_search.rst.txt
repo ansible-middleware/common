@@ -16,8 +16,8 @@
 
 .. Title
 
-product_search -- Searches products from the JBoss Network API.
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+product_search -- Searches products from the Red Hat Unified Downloads API.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. Collection note
 
@@ -46,7 +46,7 @@ Synopsis
 
 .. Description
 
-- Searches products from the JBoss Network API.
+- Searches products from the Red Hat Unified Downloads API.
 
 
 .. Aliases
@@ -84,8 +84,8 @@ Parameters
       </p>
     </div></td>
     <td><div class="ansible-option-cell">
-      <p>Address of the JBoss Network API.</p>
-      <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-value literal notranslate ansible-option-default">&#34;https://jbossnetwork.api.redhat.com&#34;</code></p>
+      <p>Address of the Red Hat Unified Downloads API.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-value literal notranslate ansible-option-default">&#34;https://api.access.redhat.com/downloads&#34;</code></p>
     </div></td>
   </tr>
   <tr class="row-odd">
@@ -98,7 +98,7 @@ Parameters
       </p>
     </div></td>
     <td><div class="ansible-option-cell">
-      <p>Client ID associated with to download a product from the JBoss Network API.</p>
+      <p>Client ID associated with to download a product from the Red Hat Unified Downloads API.</p>
       <p>If value not set, will try environment variable <code class='docutils literal notranslate'>REDHAT_PRODUCT_DOWNLOAD_CLIENT_ID</code></p>
     </div></td>
   </tr>
@@ -112,7 +112,7 @@ Parameters
       </p>
     </div></td>
     <td><div class="ansible-option-cell">
-      <p>Client Secret associated with to download a product from the JBoss Network API.</p>
+      <p>Client Secret associated with to download a product from the Red Hat Unified Downloads API.</p>
       <p>If value not set, will try environment variable <code class='docutils literal notranslate'>REDHAT_PRODUCT_DOWNLOAD_CLIENT_SECRET</code></p>
     </div></td>
   </tr>
@@ -266,15 +266,16 @@ Common return values are documented :ref:`here <common_return_values>`, the foll
   </tr>
   <tr class="row-odd">
     <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
-      <div class="ansibleOptionAnchor" id="return-results/category"></div>
-      <p class="ansible-option-title"><strong>category</strong></p>
-      <a class="ansibleOptionLink" href="#return-results/category" title="Permalink to this return value"></a>
+      <div class="ansibleOptionAnchor" id="return-results/content_type"></div>
+      <p class="ansible-option-title"><strong>content_type</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/content_type" title="Permalink to this return value"></a>
       <p class="ansible-option-type-line">
-        <span class="ansible-option-type">string</span>
+        <span class="ansible-option-type">list</span>
+        / <span class="ansible-option-elements">elements=string</span>
       </p>
     </div></td>
     <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-      <p>Product category.</p>
+      <p>Type of product (array).</p>
       <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
     </div></td>
   </tr>
@@ -294,29 +295,29 @@ Common return values are documented :ref:`here <common_return_values>`, the foll
   </tr>
   <tr class="row-odd">
     <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
-      <div class="ansibleOptionAnchor" id="return-results/distribution_status"></div>
-      <p class="ansible-option-title"><strong>distribution_status</strong></p>
-      <a class="ansibleOptionLink" href="#return-results/distribution_status" title="Permalink to this return value"></a>
-      <p class="ansible-option-type-line">
-        <span class="ansible-option-type">string</span>
-      </p>
-    </div></td>
-    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-      <p>Distribution status of the product.</p>
-      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
-    </div></td>
-  </tr>
-  <tr class="row-even">
-    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
-      <div class="ansibleOptionAnchor" id="return-results/download_path"></div>
-      <p class="ansible-option-title"><strong>download_path</strong></p>
-      <a class="ansibleOptionLink" href="#return-results/download_path" title="Permalink to this return value"></a>
+      <div class="ansibleOptionAnchor" id="return-results/download_link"></div>
+      <p class="ansible-option-title"><strong>download_link</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/download_link" title="Permalink to this return value"></a>
       <p class="ansible-option-type-line">
         <span class="ansible-option-type">string</span>
       </p>
     </div></td>
     <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
       <p>URL where the product can be downloaded.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+  <tr class="row-even">
+    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results/file_name"></div>
+      <p class="ansible-option-title"><strong>file_name</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/file_name" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+      <p>File name (may include subdirectory path).</p>
       <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
     </div></td>
   </tr>
@@ -336,20 +337,6 @@ Common return values are documented :ref:`here <common_return_values>`, the foll
   </tr>
   <tr class="row-even">
     <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
-      <div class="ansibleOptionAnchor" id="return-results/md5"></div>
-      <p class="ansible-option-title"><strong>md5</strong></p>
-      <a class="ansibleOptionLink" href="#return-results/md5" title="Permalink to this return value"></a>
-      <p class="ansible-option-type-line">
-        <span class="ansible-option-type">string</span>
-      </p>
-    </div></td>
-    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-      <p>MD5 checksum of the product.</p>
-      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
-    </div></td>
-  </tr>
-  <tr class="row-odd">
-    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
       <div class="ansibleOptionAnchor" id="return-results/name"></div>
       <p class="ansible-option-title"><strong>name</strong></p>
       <a class="ansibleOptionLink" href="#return-results/name" title="Permalink to this return value"></a>
@@ -359,6 +346,20 @@ Common return values are documented :ref:`here <common_return_values>`, the foll
     </div></td>
     <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
       <p>Name of the product.</p>
+      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
+    </div></td>
+  </tr>
+  <tr class="row-odd">
+    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+      <div class="ansibleOptionAnchor" id="return-results/product_code"></div>
+      <p class="ansible-option-title"><strong>product_code</strong></p>
+      <a class="ansibleOptionLink" href="#return-results/product_code" title="Permalink to this return value"></a>
+      <p class="ansible-option-type-line">
+        <span class="ansible-option-type">string</span>
+      </p>
+    </div></td>
+    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+      <p>Product code (category).</p>
       <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
     </div></td>
   </tr>
@@ -372,7 +373,7 @@ Common return values are documented :ref:`here <common_return_values>`, the foll
       </p>
     </div></td>
     <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-      <p>MD5 checksum of the product.</p>
+      <p>SHA256 checksum of the product.</p>
       <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
     </div></td>
   </tr>
@@ -392,20 +393,6 @@ Common return values are documented :ref:`here <common_return_values>`, the foll
   </tr>
   <tr class="row-even">
     <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
-      <div class="ansibleOptionAnchor" id="return-results/type"></div>
-      <p class="ansible-option-title"><strong>type</strong></p>
-      <a class="ansibleOptionLink" href="#return-results/type" title="Permalink to this return value"></a>
-      <p class="ansible-option-type-line">
-        <span class="ansible-option-type">string</span>
-      </p>
-    </div></td>
-    <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
-      <p>Type of product.</p>
-      <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
-    </div></td>
-  </tr>
-  <tr class="row-odd">
-    <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
       <div class="ansibleOptionAnchor" id="return-results/version"></div>
       <p class="ansible-option-title"><strong>version</strong></p>
       <a class="ansibleOptionLink" href="#return-results/version" title="Permalink to this return value"></a>
@@ -418,7 +405,7 @@ Common return values are documented :ref:`here <common_return_values>`, the foll
       <p class="ansible-option-line"><strong class="ansible-option-returned-bold">Returned:</strong> success</p>
     </div></td>
   </tr>
-  <tr class="row-even">
+  <tr class="row-odd">
     <td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
       <div class="ansibleOptionAnchor" id="return-results/visibility"></div>
       <p class="ansible-option-title"><strong>visibility</strong></p>
@@ -446,7 +433,7 @@ Common return values are documented :ref:`here <common_return_values>`, the foll
 Authors
 ~~~~~~~
 
-- Andrew Block (@sabre1041)
+- Andrew Block (@sabre1041), Ranabir Chakraborty
 
 
 .. Extra links

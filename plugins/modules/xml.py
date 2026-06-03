@@ -438,9 +438,7 @@ def is_attribute(tree, xpath, namespaces):
     An xpath attribute search will only match one item"""
     if xpath_matches(tree, xpath, namespaces):
         match = tree.xpath(xpath, namespaces=namespaces)
-        if isinstance(match[0], etree._ElementStringResult):
-            return True
-        elif isinstance(match[0], etree._ElementUnicodeResult):
+        if isinstance(match[0], str):
             return True
     return False
 

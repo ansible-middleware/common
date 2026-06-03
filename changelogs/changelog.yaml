@@ -103,3 +103,12 @@ releases:
     fragments:
     - 38.yaml
     release_date: '2026-05-26'
+  1.2.5:
+    changes:
+      minor_changes:
+      - 'Fix xml module compatibility with lxml 5.x `#43 <https://github.com/ansible-middleware/common/pull/43>`_
+
+        '
+    fragments:
+    - 43.yaml
+    release_date: '2026-06-03'

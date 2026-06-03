@@ -22,3 +22,4 @@ docs/_build/
 
 inventory
 changelogs/.plugin-cache.yaml
+.ansible

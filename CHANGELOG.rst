@@ -4,6 +4,9 @@ middleware\_automation.common Release Notes
 
 .. contents:: Topics
 
+v1.2.6
+======
+
 v1.2.5
 ======
 

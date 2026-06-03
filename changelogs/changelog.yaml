@@ -112,3 +112,5 @@ releases:
     fragments:
     - 43.yaml
     release_date: '2026-06-03'
+  1.2.6:
+    release_date: '2026-06-03'

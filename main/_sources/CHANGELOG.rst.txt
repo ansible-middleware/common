@@ -4,6 +4,14 @@ middleware\_automation.common Release Notes
 
 .. contents:: Topics
 
+v1.2.5-devel
+============
+
+Minor Changes
+-------------
+
+- Fix xml module compatibility with lxml 5.x `#43 <https://github.com/ansible-middleware/common/pull/43>`_
+
 v1.2.4
 ======
 
@@ -11,11 +19,6 @@ Major Changes
 -------------
 
 - AMW-425 Transition from CSP to Unified Downloads `#38 <https://github.com/ansible-middleware/common/pull/38>`_
-
-Minor Changes
--------------
-
-- Fix xml module compatibility with lxml 5.x `#43 <https://github.com/ansible-middleware/common/pull/43>`_
 
 v1.2.3
 ======

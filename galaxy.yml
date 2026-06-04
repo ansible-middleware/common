@@ -8,7 +8,7 @@ authors:
   - Guido Grazioli <ggraziol@redhat.com>
   - Ranabir Chakraborty <ranabir@ibm.com>
 description: Common utilities to support Ansible Middleware automation.
-license_file: "LICENSE"
+license: ["Apache-2.0"]
 tags:
   - utilities
   - products

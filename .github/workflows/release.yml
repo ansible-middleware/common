@@ -9,7 +9,7 @@ on:
 
 jobs:
   release:
-    uses: ansible-middleware/github-actions/.github/workflows/release.yml@main
+    uses: ansible-middleware/github-actions/.github/workflows/release.yml@fix/release-protected-branch-push
     with:
       collection_fqcn: 'middleware_automation.common'
       downstream_name: 'runtimes_common'
@@ -17,6 +17,7 @@ jobs:
     secrets:
       galaxy_token: ${{ secrets.ANSIBLE_GALAXY_API_KEY }}
       jira_webhook: ${{ secrets.JIRA_WEBHOOK_CREATE_VERSION }}
+      push_token: ${{ secrets.TRIGGERING_PAT }}
 
   dispatch:
     needs: release

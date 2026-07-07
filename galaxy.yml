@@ -19,7 +19,6 @@ tags:
   - middleware
   - a4mw
 dependencies:
-  "fedora.linux_system_roles": "*"
   "ansible.posix": ">=1.4.0"
 repository: https://github.com/ansible-middleware/common
 documentation: https://ansible-middleware.github.io/common

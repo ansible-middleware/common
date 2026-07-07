@@ -1,0 +1,7 @@
+breaking_changes:
+  - >-
+    Drop unused ``fedora.linux_system_roles`` collection dependency. Consumers
+    that relied on transitive installation of ``fedora.linux_system_roles`` via
+    ``middleware_automation.common`` must add it explicitly to their own
+    ``requirements.yml``. This unblocks using ``community.general`` >= 12.0.0
+    alongside middleware automation collections such as ``middleware_automation.keycloak``.

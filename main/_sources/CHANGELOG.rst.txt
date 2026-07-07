@@ -7,6 +7,16 @@ middleware\_automation.common Release Notes
 v1.2.7-devel
 ============
 
+Breaking Changes / Porting Guide
+--------------------------------
+
+- Drop unused ``fedora.linux_system_roles`` collection dependency. Consumers that relied on transitive installation of ``fedora.linux_system_roles`` via ``middleware_automation.common`` must add it explicitly to their own ``requirements.yml``. This unblocks using ``community.general`` >= 12.0.0 alongside middleware automation collections such as ``middleware_automation.keycloak``.
+
+Bugfixes
+--------
+
+- Drop unused fedora.linux_system_roles dependency `#46 <https://github.com/ansible-middleware/common/pull/46>`_
+
 v1.2.6
 ======
 

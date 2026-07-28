@@ -15,6 +15,7 @@ Breaking Changes / Porting Guide
 Bugfixes
 --------
 
+- AMW-594 Upstream release is failing due to recent rules change `#48 <https://github.com/ansible-middleware/common/pull/48>`_
 - Drop unused fedora.linux_system_roles dependency `#46 <https://github.com/ansible-middleware/common/pull/46>`_
 
 v1.2.6

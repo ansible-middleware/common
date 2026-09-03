@@ -7,6 +7,11 @@ middleware\_automation.common Release Notes
 v1.2.7-devel
 ============
 
+Minor Changes
+-------------
+
+- AMW-624 common collection spelling and grammar checking for PRs `#50 <https://github.com/ansible-middleware/common/pull/50>`_
+
 Breaking Changes / Porting Guide
 --------------------------------
 

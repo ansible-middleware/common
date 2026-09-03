@@ -1,0 +1,19 @@
+# Common collection / Ansible domain-specific words
+# Only terms NOT covered by built-in dictionaries
+
+# Product names and projects
+Infinispan
+Wildfly
+RHBK
+rhbk
+JBOSSNETWORK
+
+# Ansible terms
+fqcn
+FQCN
+
+# CI / DevOps
+sangonzal
+
+# RST / Sphinx directives
+toctree

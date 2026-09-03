@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": ["changelogs/**", "CHANGELOG.rst"],
+  "files": [
+    "**/*.md",
+    "**/*.rst",
+    "molecule/**/*.yml",
+    "meta/runtime.yml",
+    "meta/execution-environment.yml",
+    ".github/workflows/*.yml",
+    ".github/ISSUE_TEMPLATE/*.md",
+    "galaxy.yml"
+  ],
+  "dictionaries": [
+    "custom-common",
+    "java",
+    "bash",
+    "shellscript",
+    "fullstack",
+    "softwareTerms",
+    "software-tools",
+    "cpp-compound-words",
+    "python",
+    "docker",
+    "k8s",
+    "html",
+    "css",
+    "git",
+    "networking-terms",
+    "node",
+    "npm"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "custom-common",
+      "path": ".cspell/custom-dictionary.txt",
+      "addWords": true
+    }
+  ],
+  "ignoreRegExpList": [
+    "/\\{\\{.*?\\}\\}/g",
+    "/`[^`]+`/g",
+    "/(https?:\\/\\/[^\\s)]+)/g",
+    "/\\|`?[a-z_]+`?\\|/g",
+    "/\\[.*?\\]\\(.*?\\)/g",
+    "/^\\s*authors?:.*$/gm",
+    "/^\\s*-\\s+.*<[^>]+>.*$/gm"
+  ]
+}

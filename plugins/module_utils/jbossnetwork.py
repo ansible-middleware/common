@@ -33,9 +33,9 @@ from ansible_collections.middleware_automation.common.plugins.module_utils.const
 )
 
 import json
-from ansible.module_utils._text import to_native
+from ansible.module_utils.common.text.converters import to_native
 from ansible.module_utils.urls import Request
-from ansible.module_utils.six.moves.urllib.parse import urlencode
+from urllib.parse import urlencode
 
 
 def get_authenticated_session(module, sso_url, validate_certs, client_id, client_secret):

@@ -11,6 +11,7 @@ Minor Changes
 -------------
 
 - AMW-624 common collection spelling and grammar checking for PRs `#50 <https://github.com/ansible-middleware/common/pull/50>`_
+- Replace deprecated ansible.module_utils imports `#51 <https://github.com/ansible-middleware/common/pull/51>`_
 
 Breaking Changes / Porting Guide
 --------------------------------

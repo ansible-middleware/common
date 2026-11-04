@@ -4,6 +4,27 @@ middleware\_automation.common Release Notes
 
 .. contents:: Topics
 
+v1.2.7
+======
+
+Minor Changes
+-------------
+
+- AMW-624 common collection spelling and grammar checking for PRs `#50 <https://github.com/ansible-middleware/common/pull/50>`_
+- Replace deprecated ansible.module_utils imports `#51 <https://github.com/ansible-middleware/common/pull/51>`_
+
+Breaking Changes / Porting Guide
+--------------------------------
+
+- Drop unused ``fedora.linux_system_roles`` collection dependency. Consumers that relied on transitive installation of ``fedora.linux_system_roles`` via ``middleware_automation.common`` must add it explicitly to their own ``requirements.yml``. This unblocks using ``community.general`` >= 12.0.0 alongside middleware automation collections such as ``middleware_automation.keycloak``.
+
+Bugfixes
+--------
+
+- AMW-594 Upstream release is failing due to recent rules change `#48 <https://github.com/ansible-middleware/common/pull/48>`_
+- AMW-671 jbcs fails with invalid product category `#52 <https://github.com/ansible-middleware/common/pull/52>`_
+- Drop unused fedora.linux_system_roles dependency `#46 <https://github.com/ansible-middleware/common/pull/46>`_
+
 v1.2.6
 ======
 

@@ -235,7 +235,8 @@ def main():
         except Exception as err:
             module.fail_json(msg="Error Listing Available Product Categories: %s" % (to_native(err)))
 
-        if product_category not in product_categories:
+        product_categories_lower = [c.lower() for c in product_categories]
+        if product_category.lower() not in product_categories_lower:
             module.fail_json(msg="'{0}' is not a valid Product Category".format(product_category))
 
     # Search for Products
